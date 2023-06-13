@@ -1,5 +1,6 @@
+<div class="container">
 <h1>Dashboard</h1>
-    
+
 <h2>Ticket statistics</h2>
 <div class="open-tickets">
   <strong>Open Tickets:</strong> <%= Ticket.open_count %>
@@ -26,13 +27,11 @@
   <tbody>
     <% @tickets.each do |ticket| %>
         <tr>
-            <td><%= ticket.ticket_id %></td>
-            <td><%= ticket.subject %></td>
-            <td><%= ticket.user_id %></td>
+            <td><%= ticket.id %></td>
+            <td><%= ticket.user %></td>
             <td><%= ticket.updated_at %></td>
-            <td><%= ticket.group %></td>
-            <td><%= ticket.assignee %></td>
         </tr>
     <%end%>
   </tbody>
 </table>
+</div>

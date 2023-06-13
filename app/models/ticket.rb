@@ -5,8 +5,9 @@ class Ticket < ApplicationRecord
   has_many :messages, through: :chatrooms
   has_one :chatroom
   validates :content, presence: true
-  validates :client_email, presence: true, uniqueness:{case_sensetive:false},
-  format:{with:VALID_EMAIL_REGEX,multiline:true}
+  validates :client_email, presence: true
+  # , uniqueness:{case_sensetive:false},
+  # format:{with:VALID_EMAIL_REGEX,multiline:true}
   enum status: {open: 0, assigned: 1, closed: 2}
   #, format: { with: /\A.*@.*\.com\z/ }
 
@@ -27,4 +28,3 @@ class Ticket < ApplicationRecord
     where(status: :closed).count
   end
 end
-
