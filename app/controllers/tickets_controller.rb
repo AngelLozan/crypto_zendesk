@@ -18,12 +18,11 @@ class TicketsController < ApplicationController
     end
   end
 
-  def update
-    # mark status (open, closed, assigned)
-  end
 
   def assign
-    
+    # If user params, assing to that user
+    # otherwise, assign to the current user
+    @ticket.user_id = current_user.id
   end
 
   private
@@ -36,7 +35,8 @@ class TicketsController < ApplicationController
     params.require(:ticket).permit(
       :client_email,
       :wallet_address,
-      :content
+      :content,
+      :status
     )
   end
 end
