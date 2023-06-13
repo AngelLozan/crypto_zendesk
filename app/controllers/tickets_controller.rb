@@ -19,9 +19,11 @@ class TicketsController < ApplicationController
   end
 
   def update
-    # Need to get id of user to assign and ticket
-    # if condition
-    # mark status
+    # mark status (open, closed, assigned)
+  end
+
+  def assign
+    
   end
 
   private
