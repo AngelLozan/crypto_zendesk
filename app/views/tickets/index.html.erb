@@ -1,7 +1,13 @@
 <h1>Dashboard</h1>
     
 <h2>Ticket statistics</h2>
+<div class="open-tickets">
+  <strong>Open Tickets:</strong> <%= Ticket.open_count %>
+</div>
 
+<div class="closed-tickets">
+  <strong>Closed Tickets:</strong> <%= Ticket.closed_count %>
+</div>
 
 <h3> My Tickets</h3>
 
