@@ -141,7 +141,7 @@ GEM
     mini_mime (1.1.2)
     minitest (5.18.0)
     msgpack (1.7.1)
-    net-imap (0.3.4)
+    net-imap (0.3.6)
       date
       net-protocol
     net-pop (0.1.2)
@@ -151,7 +151,11 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.9)
+<<<<<<< HEAD
     nokogiri (1.15.2-arm64-darwin)
+=======
+    nokogiri (1.15.2-x86_64-darwin)
+>>>>>>> 129a53966e0b00d52c1bb2b574c9ef5f82248ce6
       racc (~> 1.4)
     nokogiri (1.15.2-x86_64-linux)
       racc (~> 1.4)
@@ -258,7 +262,11 @@ GEM
     zeitwerk (2.6.8)
 
 PLATFORMS
+<<<<<<< HEAD
   arm64-darwin-22
+=======
+  x86_64-darwin-21
+>>>>>>> 129a53966e0b00d52c1bb2b574c9ef5f82248ce6
   x86_64-linux
 
 DEPENDENCIES

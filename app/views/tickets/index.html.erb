@@ -1,0 +1,37 @@
+<div class="container">
+<h1>Dashboard</h1>
+
+<h2>Ticket statistics</h2>
+<div class="open-tickets">
+  <strong>Open Tickets:</strong> <%= Ticket.open_count %>
+</div>
+
+<div class="closed-tickets">
+  <strong>Closed Tickets:</strong> <%= Ticket.closed_count %>
+</div>
+
+<h3> My Tickets</h3>
+
+<table>
+    <thead>
+      <tr>
+        <th>Ticket ID</th>
+        <th>Subject</th>
+        <th>Requester</th>
+        <th>Updated</th>
+        <th>Group</th>
+        <th>Assignee</th>
+      </tr>
+    </thead>
+
+  <tbody>
+    <% @tickets.each do |ticket| %>
+        <tr>
+            <td><%= ticket.id %></td>
+            <td><%= ticket.user %></td>
+            <td><%= ticket.updated_at %></td>
+        </tr>
+    <%end%>
+  </tbody>
+</table>
+</div>
