@@ -1,8 +1,7 @@
 class TicketsController < ApplicationController
-  before_action :set_ticket, only: %i[:show, :edit, :update, :assign]
+  before_action :set_ticket, only: %i[:index, :show, :edit, :update, :assign]
 
   def show
-    @ticket = Ticket.find(params[:id])
   end
 
   def new
@@ -18,11 +17,11 @@ class TicketsController < ApplicationController
     end
   end
 
-
   def assign
-    # If user params, assing to that user
-    # otherwise, assign to the current user
-    @ticket.user_id = current_user.id
+    # @user = User.find(params[:user_id])
+    # # If user params, assing to that user
+    # # otherwise, assign to the current user
+    @ticket.user = current_user
   end
 
   private
