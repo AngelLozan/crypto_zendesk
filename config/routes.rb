@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   root to: "pages#home"
   resources :tickets, only: [:index, :show, :new, :create, :update]
 
-  # Custom route assign ticket to user GET `/tickets/:id/assign`, to: "tickets#assign", as: :assign_ticket
+  patch '/tickets/:id', to: "tickets#assign", as: :assign_ticket
+
+  # patch '/tickets/:ticket_id/users/:user_id', to: "tickets#assign", as: :assign_ticket_to_user #no more than two keys nested. Or else use form.
 
   # resources :profiles, only: [:show, :edit, :update, :new, :create]
 

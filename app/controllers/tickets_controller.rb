@@ -1,12 +1,12 @@
 class TicketsController < ApplicationController
-  before_action :set_ticket, only: %i[:show, :edit, :update, :assign]
+
+  before_action :set_ticket, only: %i[:index, :show, :edit, :update, :assign]
   
   def index
    @tickets =Ticket.all
   end
 
   def show
-    @ticket = Ticket.find(params[:id])
   end
 
   def new
@@ -21,6 +21,13 @@ class TicketsController < ApplicationController
       render :new
     end
    end
+
+
+  def assign
+    # @user = User.find(params[:user_id])
+    # # If user params, assing to that user
+    # # otherwise, assign to the current user
+    @ticket.user = current_user
 
   def edit 
    @ticket = Ticket.find(params[:id])
@@ -42,7 +49,8 @@ class TicketsController < ApplicationController
     params.require(:ticket).permit(
       :client_email,
       :wallet_address,
-      :content
+      :content,
+      :status
     )
   end
 end
