@@ -4,7 +4,7 @@ class CreateTickets < ActiveRecord::Migration[7.0]
       t.string :client_email
       t.string :wallet_address
       t.text :content
-      t.references :user, null: false, foreign_key: true
+      t.references :user, foreign_key: true
 
       t.timestamps
     end

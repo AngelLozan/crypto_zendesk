@@ -1,0 +1,21 @@
+{
+  "actioncable.js": "/packs/js/actioncable.chunk.js",
+  "application.js": "/packs/js/application.js",
+  "entrypoints": {
+    "application": {
+      "assets": {
+        "js": [
+          "/packs/js/runtime.js",
+          "/packs/js/vendors-node_modules_hotwired_stimulus_dist_stimulus_js-node_modules_hotwired_turbo-rails_app-9d45dc.js",
+          "/packs/js/application.js"
+        ]
+      }
+    }
+  },
+  "js/actioncable.chunk.js.map": "/packs/js/actioncable.chunk.js.map",
+  "js/application.js.map": "/packs/js/application.js.map",
+  "js/runtime.js.map": "/packs/js/runtime.js.map",
+  "js/vendors-node_modules_hotwired_stimulus_dist_stimulus_js-node_modules_hotwired_turbo-rails_app-9d45dc.js": "/packs/js/vendors-node_modules_hotwired_stimulus_dist_stimulus_js-node_modules_hotwired_turbo-rails_app-9d45dc.js",
+  "js/vendors-node_modules_hotwired_stimulus_dist_stimulus_js-node_modules_hotwired_turbo-rails_app-9d45dc.js.map": "/packs/js/vendors-node_modules_hotwired_stimulus_dist_stimulus_js-node_modules_hotwired_turbo-rails_app-9d45dc.js.map",
+  "runtime.js": "/packs/js/runtime.js"
+}
