@@ -10,7 +10,7 @@ class Ticket < ApplicationRecord
   enum status: {open: 0, assigned: 1, closed: 2}
   #, format: { with: /\A.*@.*\.com\z/ }
 
-  # private
+  private
 
   # def valid_email
   #   # TODO: return true if the email is valid, false otherwise
@@ -20,11 +20,11 @@ class Ticket < ApplicationRecord
 
 
   def self.open_count
-    where(closed: false).count
+    where(status: :open).count
   end
 
   def self.closed_count
-    where(closed: true).count
+    where(status: :closed).count
   end
 end
 
