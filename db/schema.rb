@@ -44,7 +44,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_13_133815) do
     t.string "client_email"
     t.string "wallet_address"
     t.text "content"
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "status", default: 0
