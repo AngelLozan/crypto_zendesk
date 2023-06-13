@@ -17,4 +17,14 @@ class Ticket < ApplicationRecord
   #   # email.match(/\A[\w+\-.]+@[a-z\d-]+(\.[a-z\d-]+)*\.[a-z]+\z/i) ? true : false
   #   self.client_email = client_email.strip unless client_email.nil?
   # end
+
+
+  def self.open_count
+    where(closed: false).count
+  end
+
+  def self.closed_count
+    where(closed: true).count
+  end
 end
+
