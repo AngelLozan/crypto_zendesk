@@ -7,10 +7,11 @@ Rails.application.routes.draw do
     resources :tickets, only: [:assign]
   end
 
-  resources :profiles, only: [:show, :edit, :update, :new, :create]
-  
+  # resources :profiles, only: [:show, :edit, :update, :new, :create]
+
   resources :chatrooms, only: :show do
     resources :messages, only: :create
   end
 
+  get '/account', to: 'pages#account', as: :account
 end
