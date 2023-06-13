@@ -1,5 +1,9 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: %i[:show, :edit, :update, :assign]
+  
+  def index
+   @tickets =Ticket.all
+  end
 
   def show
     @ticket = Ticket.find(params[:id])
@@ -16,15 +20,17 @@ class TicketsController < ApplicationController
     else
       render :new
     end
+   end
+
+  def edit 
+   @ticket = Ticket.find(params[:id])
   end
 
-  def update
-    # mark status (open, closed, assigned)
+  def update 
+   @ticket = Ticket.find(params[:id])
+   @ticket.update(params[:ticket])
   end
-
-  def assign
-    
-  end
+  
 
   private
 
