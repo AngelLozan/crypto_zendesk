@@ -1,5 +1,6 @@
 class TicketsController < ApplicationController
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     def index
      @tickets =Ticket.all
@@ -17,9 +18,15 @@ class TicketsController < ApplicationController
 end
 =======
   before_action :set_ticket, only: %i[:show, :edit, :update, :assign]
+=======
+  before_action :set_ticket, only: %i[:index, :show, :edit, :update, :assign]
+
+  def index
+    @tickets = Ticket.all
+  end
+>>>>>>> 8ea7fb52116b70d177542102f5071ba74ef73911
 
   def show
-    @ticket = Ticket.find(params[:id])
   end
 
   def new
@@ -35,12 +42,20 @@ end
     end
   end
 
-  def update
-    # mark status (open, closed, assigned)
+  def assign
+    # @user = User.find(params[:user_id])
+    # # If user params, assing to that user
+    # # otherwise, assign to the current user
+    @ticket.user = current_user
   end
 
-  def assign
-    
+  def edit
+    @ticket = Ticket.find(params[:id])
+  end
+
+  def update
+    @ticket = Ticket.find(params[:id])
+    @ticket.update(params[:ticket])
   end
 
   private
@@ -53,8 +68,12 @@ end
     params.require(:ticket).permit(
       :client_email,
       :wallet_address,
-      :content
+      :content,
+      :status
     )
   end
 end
+<<<<<<< HEAD
 >>>>>>> 5a5ad04e20b2c6d412e9ed9eaba342c01e45a5af
+=======
+>>>>>>> 8ea7fb52116b70d177542102f5071ba74ef73911

@@ -152,10 +152,14 @@ GEM
       net-protocol
     nio4r (2.5.9)
 <<<<<<< HEAD
+<<<<<<< HEAD
     nokogiri (1.15.2-x86_64-darwin)
 =======
     nokogiri (1.15.2-arm64-darwin)
 >>>>>>> 5a5ad04e20b2c6d412e9ed9eaba342c01e45a5af
+=======
+    nokogiri (1.15.2-x86_64-darwin)
+>>>>>>> 8ea7fb52116b70d177542102f5071ba74ef73911
       racc (~> 1.4)
     nokogiri (1.15.2-x86_64-linux)
       racc (~> 1.4)
@@ -263,10 +267,14 @@ GEM
 
 PLATFORMS
 <<<<<<< HEAD
+<<<<<<< HEAD
   x86_64-darwin-21
 =======
   arm64-darwin-22
 >>>>>>> 5a5ad04e20b2c6d412e9ed9eaba342c01e45a5af
+=======
+  arm64-darwin-22
+>>>>>>> 8ea7fb52116b70d177542102f5071ba74ef73911
   x86_64-linux
 
 DEPENDENCIES
