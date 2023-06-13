@@ -5,11 +5,7 @@ Rails.application.routes.draw do
 
   patch '/tickets/:id', to: "tickets#assign", as: :assign_ticket
 
-<<<<<<< HEAD
   # resources :profiles, only: [:show, :edit, :update, :new, :create]
-=======
-  resources :profiles, only: [:show, :edit, :update, :new, :create]
->>>>>>> master
 
   resources :chatrooms, only: :show do
     resources :messages, only: :create
