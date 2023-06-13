@@ -1,30 +1,10 @@
 class TicketsController < ApplicationController
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-    def index
-     @tickets =Ticket.all
-    end
-
-    def edit 
-     @ticket = Ticket.find(params[:id])
-
-    end
-
-    def update 
-     @ticket = Ticket.find(params[:id])
-     @ticket.update(params[:ticket])
-    end
-end
-=======
   before_action :set_ticket, only: %i[:show, :edit, :update, :assign]
-=======
-  before_action :set_ticket, only: %i[:index, :show, :edit, :update, :assign]
 
   def index
     @tickets = Ticket.all
   end
->>>>>>> 8ea7fb52116b70d177542102f5071ba74ef73911
+
 
   def show
   end
@@ -73,7 +53,3 @@ end
     )
   end
 end
-<<<<<<< HEAD
->>>>>>> 5a5ad04e20b2c6d412e9ed9eaba342c01e45a5af
-=======
->>>>>>> 8ea7fb52116b70d177542102f5071ba74ef73911
