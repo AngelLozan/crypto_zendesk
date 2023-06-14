@@ -1,55 +1,55 @@
-<div class="container">
+<div class="container-fluid">
 
-<div class="d-flex justify-content-center mt-3">
-  <h1>Dashboard</h1>
-</div>
- <div class="d-flex justify-content-center">
- <div class="mx-3 p-3 border rounded shadow-sm">
-   <div class="open-tickets">
-      <strong>Open Tickets:</strong> <%= Ticket.open_count %>
-    </div>
- </div>
- <div class="mx-3 p-3 border rounded shadow-sm">
-    <div class="closed-tickets">
-      <strong>Closed Tickets:</strong> <%= Ticket.closed_count %>
-    </div>
- </div>
-</div>
-
-
-<div class="d-flex flex-column justify-content-center my-3">
-  <h3> My Tickets</h3>
-  <p>Welcome back <%= @current_user.first_name %>!</p>
-</div>
+  <div class="d-flex justify-content-center">
+    <h1>Dashboard</h1>
+  </div>
+  <div class="d-flex justify-content-center">
+  <div class="mx-3 p-3 border rounded shadow-sm">
+    <div class="open-tickets">
+        <strong>Open Tickets:</strong> <%= Ticket.open_count %>
+      </div>
+  </div>
+  <div class="mx-3 p-3 border rounded shadow-sm">
+      <div class="closed-tickets">
+        <strong>Closed Tickets:</strong> <%= Ticket.closed_count %>
+      </div>
+  </div>
+  </div>
 
 
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Ticket ID</th>
-        <th scope="col">Subject</th>
-        <th scope="col">Requester</th>
-        <th scope="col">Updated</th>
-        <th scope="col">Assignee</th>
-        <th scope="col"><i class="fa-solid fa-user-plus"></i></th>
-      </tr>
-    </thead>
+  <div class="d-flex flex-column justify-content-center my-3">
+    <h3> My Tickets</h3>
+    <p>Welcome back <%= @current_user.first_name %>!</p>
+  </div>
 
-  <tbody>
-    <% @tickets.each do |ticket| %>
-      <tr>
-        <th scope="row"><%= ticket.id %></th>
-          <td><%= ticket.subject %></td>
-          <td><%= ticket.client_email %></td>
-          <td><%= ticket.updated_at %></td>
-          <% if ticket.user.present? %>
-            <td><%= ticket.user.first_name.capitalize %> <%= ticket.user.last_name.capitalize %></td>
-          <% else %>
-            <td>Unassigned</td>
-          <% end %>
-        <td><%= link_to "Assign to me", assign_ticket_path(ticket), data: {turbo_method: :patch}, class: "btn btn-primary text-light rounded shadow-sm" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
+  <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Ticket ID</th>
+          <th scope="col">Subject</th>
+          <th scope="col">Requester</th>
+          <th scope="col">Updated</th>
+          <th scope="col">Assignee</th>
+          <th scope="col"><i class="fa-solid fa-user-plus"></i></th>
+        </tr>
+      </thead>
+
+    <tbody>
+      <% @tickets.each do |ticket| %>
+        <tr>
+          <th scope="row"><%= ticket.id %></th>
+            <td><%= ticket.subject %></td>
+            <td><%= ticket.client_email %></td>
+            <td><%= ticket.updated_at %></td>
+            <% if ticket.user.present? %>
+              <td><%= ticket.user.first_name.capitalize %> <%= ticket.user.last_name.capitalize %></td>
+            <% else %>
+              <td>Unassigned</td>
+            <% end %>
+          <td><%= link_to "Assign to me", assign_ticket_path(ticket), data: {turbo_method: :patch}, class: "btn btn-primary text-light rounded shadow-sm" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
