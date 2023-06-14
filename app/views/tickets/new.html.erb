@@ -1,4 +1,10 @@
 <div class="container">
+
+  <div class="d-flex justify-content-center my-3">
+    <button class="btn btn-primary">Connect Wallet</button>
+  </div>
+
+
   <%= simple_form_for(@ticket) do |f| %>
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
