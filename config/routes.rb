@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
-  resources :tickets, only: [:index, :show, :new, :create, :update]
+  resources :tickets, only: %i[index show new create update]
 
   patch '/tickets/:id', to: "tickets#assign", as: :assign_ticket
 

@@ -1,12 +1,8 @@
 class TicketsController < ApplicationController
-  before_action :set_ticket, only: %i[:show, :edit, :update, :assign]
+  before_action :set_ticket, only: %i[show edit update assign]
 
   def index
     @tickets = Ticket.all
-  end
-
-
-  def show
   end
 
   def new
@@ -16,7 +12,10 @@ class TicketsController < ApplicationController
   def create
     @ticket = Ticket.new(ticket_params)
     if @ticket.save
-      redirect_to chatroom_path(@ticket)
+      @chatroom = Chatroom.new
+      @chatroom.ticket = @ticket
+      @chatroom.save
+      redirect_to chatroom_path(@chatroom)
     else
       render :new
     end
