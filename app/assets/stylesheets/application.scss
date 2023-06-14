@@ -10,4 +10,8 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
-@import "navbar"
+@import "navbar";
+
+body {
+  min-height: 100vh;
+}
