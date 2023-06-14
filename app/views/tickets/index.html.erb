@@ -22,34 +22,41 @@
     <p>Welcome back <%= @current_user.first_name %>!</p>
   </div>
 
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Ticket ID</th>
+        <th scope="col">Subject</th>
+        <th scope="col">Requester</th>
+        <th scope="col">Updated</th>
+        <th scope="col">Assignee</th>
+        <th scope="col"><i class="fa-solid fa-user-plus"></i></th>
+      </tr>
+    </thead>
 
-  <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Ticket ID</th>
-          <th scope="col">Subject</th>
-          <th scope="col">Requester</th>
-          <th scope="col">Updated</th>
-          <th scope="col">Assignee</th>
-          <th scope="col"><i class="fa-solid fa-user-plus"></i></th>
-        </tr>
-      </thead>
+  <tbody>
+     <% @tickets.reverse.each do |ticket| %>
+      <tr>
+        <th scope="row"><%= ticket.id %></th>
+          <td><%= ticket.subject %></td>
+          <td><%= ticket.client_email %></td>
+          <td><%= ticket.updated_at %></td>
+          <% if ticket.user.present? %>
+            <td><%= ticket.user.first_name.capitalize %> <%= ticket.user.last_name.capitalize %></td>
+          <% else %>
+            <td>Unassigned</td>
+          <% end %>
+        <td><%= link_to "Assign to me", assign_ticket_path(ticket), data: {turbo_method: :patch}, class: "btn btn-primary text-light rounded shadow-sm" %></td>
+      </tr>
+    <% end %>
+  </tbody>
 
-    <tbody>
-      <% @tickets.each do |ticket| %>
-        <tr>
-          <th scope="row"><%= ticket.id %></th>
-            <td><%= ticket.subject %></td>
-            <td><%= ticket.client_email %></td>
-            <td><%= ticket.updated_at %></td>
-            <% if ticket.user.present? %>
-              <td><%= ticket.user.first_name.capitalize %> <%= ticket.user.last_name.capitalize %></td>
-            <% else %>
-              <td>Unassigned</td>
-            <% end %>
-          <td><%= link_to "Assign to me", assign_ticket_path(ticket), data: {turbo_method: :patch}, class: "btn btn-primary text-light rounded shadow-sm" %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+ </table>
 </div>
+
+<style>
+  .table-hover tbody tr:hover {
+    background-color: #f5f5f5;
+    cursor: pointer;
+  }
+</style>
