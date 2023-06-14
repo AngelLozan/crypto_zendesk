@@ -44,6 +44,14 @@ class TicketsController < ApplicationController
     @ticket = Ticket.find(params[:id])
     @ticket.update(params[:ticket])
   end
+  
+  def show
+    @ticket = Ticket.find_by(id: params[:id])
+    if @ticket.nil?
+    end
+  end
+  
+
 
   private
 
