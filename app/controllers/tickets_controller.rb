@@ -4,6 +4,7 @@ class TicketsController < ApplicationController
 
   def index
     @tickets = Ticket.all
+    @current_user = current_user
   end
 
   def new
@@ -28,6 +29,14 @@ class TicketsController < ApplicationController
     # # If user params, assing to that user
     # # otherwise, assign to the current user
     @ticket.user = current_user
+      # if @ticket.save
+      #   @chatroom =
+      #   @chatroom.ticket = @ticket
+      #   @chatroom.save
+      #   redirect_to chatroom_path(@chatroom)
+      # else
+      #   render :index, status: :unprocessable_entity
+      # end
   end
 
   def edit
