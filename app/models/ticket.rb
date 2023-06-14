@@ -4,8 +4,10 @@ class Ticket < ApplicationRecord
   belongs_to :user, optional: true
   has_many :messages, through: :chatrooms
   has_one :chatroom, dependent: :destroy
+  validates :subject, presence: true
   validates :content, presence: true
   validates :client_email, presence: true
+
   # , uniqueness:{case_sensetive:false},
   # format:{with:VALID_EMAIL_REGEX,multiline:true}
   enum status: {open: 0, assigned: 1, closed: 2}
