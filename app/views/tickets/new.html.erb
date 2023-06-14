@@ -1,11 +1,15 @@
 <div class="container" data-controller="wallet" >
 
   <div class="d-flex justify-content-center my-3">
-    <button type="button" data-toggle="modal" data-target="walletModal" class="btn btn-primary">Connect Wallet</button>
+    <h1>Contact Support</h1>
+  </div>
+
+  <div class="d-flex justify-content-center my-3">
+    <button type="button" data-action="click->wallet#open" class="btn btn-primary">Connect Wallet</button>
   </div>
 
   <!-- Modal -->
-  <div class="modal fade" id="walletModalCenter" tabindex="-1" role="dialog" aria-labelledby="Wallet modal" aria-hidden="true">
+  <div data-wallet-target="modal" class="modal fade" id="walletModalCenter" tabindex="-1" role="dialog" aria-labelledby="Wallet modal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
           <button type="button" class="btn btn-primary" data-dismiss="modal">Metamask</button>
