@@ -1,8 +1,7 @@
-
 <div class="container">
-  </div class="row justify-content-center">
-    <div class="col-lg-4">
-      <div id="sign-up" class="card p-4 rounded-5 bg-light">
+  <div class="row justify-content-center">
+    <div class="col-xs-12 col-sm-4">
+      <div class="form-login">
         <h2>Sign up</h2>
 
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -35,7 +34,7 @@
         <% end %>
         <div class="mt-3">
           <%= render "devise/shared/links" %>
-      </div>
+        </div>
       </div>
     </div>
   </div>
