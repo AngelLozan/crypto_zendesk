@@ -2,8 +2,8 @@ require "faker"
 require "open-uri"
 
 puts "deleting existing data"
-User.destroy_all
 Ticket.destroy_all
+User.destroy_all
 Chatroom.destroy_all
 puts "done deleting existing data"
 
