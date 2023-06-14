@@ -27,7 +27,7 @@ puts "done creating users and tickets"
 # puts "done fetching photos"
 
 puts "adding chatrooms to 5 tickets"
-tickets.first(5).each do |ticket|
+tickets.each do |ticket|
     Chatroom.create!(secret_url: Faker::Internet.domain_name, ticket_id: ticket.id)
     puts "Added chatroom to #{ticket.id}"
 end
