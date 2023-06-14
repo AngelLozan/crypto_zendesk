@@ -1,4 +1,4 @@
-<div class="container" data-controller="wallet" >
+<div class="container" data-controller="wallet" data-wallet-project-id-value="<%= ENV['PROJECT_ID'] %>">
 
   <div class="d-flex justify-content-center my-3">
     <h1>Contact Support</h1>
@@ -15,7 +15,7 @@
     </div>
     <button data-action="click->wallet#" class="btn">Metamask</button>
     <button data-action="click->wallet#phantomConnect" class="btn">Phantom</button>
-    <button data-action="click->wallet#" class="btn">Wallet Connect</button>
+    <button data-action="click->wallet#walletConnect" class="btn">Wallet Connect</button>
     <button data-action="click->wallet#" class="btn">Exodus</button>
   </section>
 

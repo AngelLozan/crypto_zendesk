@@ -1,16 +1,23 @@
 import { Controller } from "@hotwired/stimulus";
-// import { Modal } from "bootstrap"
+import { Web3ModalAuth } from '@web3modal/auth-html'
 
 // Connects to data-controller="wallet"
 export default class extends Controller {
   static targets = ["modal", "buttonClose", "overlay", "buttonOpen", "address"];
+  static values = {
+    projectId: String,
+  };
 
   solanaProvider;
+  web3Modal;
 
   async connect() {
     console.log("Hello, Stimulus!");
-    this.solanaProvider = this.getSolanaProvider();
+    console.log(this.projectIdValue);
+    this.solanaProvider = await this.getSolanaProvider();
+    this.web3Modal = await this.getWalletConnect();
     console.log(this.solanaProvider);
+    console.log(this.web3Modal);
   }
 
   openModal() {
@@ -23,6 +30,16 @@ export default class extends Controller {
     this.overlayTarget.classList.add("hidden");
   }
 
+  async walletConnect() {
+    try {
+      const data = await this.web3Modal.signIn({ statement: 'Connect to Web3Modal' })
+      console.info(data)
+      this.closeModal();
+    } catch (err) {
+      console.log(err.message);
+    }
+  }
+
   async phantomConnect() {
     try {
       // const resp = await this.solanaProvider.connect();
@@ -33,6 +50,19 @@ export default class extends Controller {
     } catch (err) {
       console.log(err.message);
     }
+  }
+
+  async getWalletConnect() {
+    const web3Modal = await new Web3ModalAuth({
+      projectId: this.projectIdValue,
+      metadata: {
+        name: 'Web3Modal',
+        description: 'Web3Modal',
+        url: 'web3modal.com',
+        icons: ['https://walletconnect.com/_next/static/media/logo_mark.84dd8525.svg']
+      }
+    })
+    return web3Modal;
   }
 
   async getSolanaProvider() {
