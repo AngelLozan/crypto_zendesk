@@ -1,4 +1,5 @@
 class TicketsController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[:new]
   before_action :set_ticket, only: %i[:show, :edit, :update, :assign]
 
   def index
@@ -18,7 +19,7 @@ class TicketsController < ApplicationController
     if @ticket.save
       redirect_to chatroom_path(@ticket)
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
