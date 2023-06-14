@@ -1,5 +1,5 @@
 class TicketsController < ApplicationController
-  skip_before_action :authenticate_user!, only: :new
+  skip_before_action :authenticate_user!, only: %i[new create]
   before_action :set_ticket, only: %i[show edit update assign]
 
   def index
@@ -62,14 +62,12 @@ class TicketsController < ApplicationController
     @ticket = Ticket.find(params[:id])
     @ticket.update(params[:ticket])
   end
-  
+
   def show
     @ticket = Ticket.find_by(id: params[:id])
-    if @ticket.nil?
-    end
+    # if @ticket.nil?
+    # end
   end
-  
-
 
   private
 
@@ -82,7 +80,8 @@ class TicketsController < ApplicationController
       :client_email,
       :wallet_address,
       :content,
-      :status
+      :status,
+      :subject
     )
   end
 end
