@@ -4,6 +4,7 @@ require "open-uri"
 puts "deleting existing data"
 User.destroy_all
 Ticket.destroy_all
+Chatroom.destroy_all
 puts "done deleting existing data"
 
 puts "creating ten users, and tickets"
@@ -24,12 +25,10 @@ puts "done creating users and tickets"
 # end
 # puts "done fetching photos"
 
-# puts "adding photos to cars"
-# cars.each do |car|
-#   images_urls.each do |url|
-#     file = URI.open(url)
-#     car.photos.attach(io: file, filename: "car.png", content_type: "image/png")
-#     puts "added photo to car #{car.id}"
-#   end
-# end
-# puts "done adding photos to cars"
+puts "adding chatrooms to 5 tickets"
+tickets.first(5).each do |ticket|
+    Chatroom.create!(secret_url: Faker::Internet.domain_name, ticket_id: ticket.id)
+    puts "Added chatroom to #{ticket.id}"
+  end
+end
+puts "done adding chatrooms to 5 tickets"
