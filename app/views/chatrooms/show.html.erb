@@ -1,0 +1,18 @@
+<div class="container chatroom">
+  <h1>#<%= @chatroom.id %></h1>
+  <button>Resolved</button>
+  <button>Reassign</button>
+  <input type="text" placeholder="search">
+  <div class="messages">
+    <%= @ticket.content %>
+    <% @chatroom.messages.each do |message| %>
+      <div id="message-<%= message.id %>">
+        <small>
+          <strong><%= message.email_address %></strong>
+          <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+        </small>
+        <p><%= message.content %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
