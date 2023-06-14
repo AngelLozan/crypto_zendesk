@@ -42,12 +42,12 @@
             <td>Subject placeholder</td>
             <td><%= ticket.client_email %></td>
             <td><%= ticket.updated_at %></td>
-            <% if ticket.assigned? %>
-              <td><%= ticket.user.first_name %></td>
+            <% if ticket.user.present? %>
+              <td><%= ticket.user.first_name.capitalize %> <%= ticket.user.last_name.capitalize %></td>
             <% else %>
               <td>Unassigned</td>
             <% end %>
-          <td><%= link_to "Assign to me", assign_ticket_path(ticket), class: "btn btn-primary text-light rounded shadow-sm" %></td>
+          <td><%= link_to "Assign to me", assign_ticket_path(ticket), data: {turbo_method: :patch}, class: "btn btn-primary text-light rounded shadow-sm" %></td>
         </tr>
     <% end %>
   </tbody>
