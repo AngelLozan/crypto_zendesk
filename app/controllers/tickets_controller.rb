@@ -1,12 +1,9 @@
 class TicketsController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[:new]
   before_action :set_ticket, only: %i[:show, :edit, :update, :assign]
 
   def index
     @tickets = Ticket.all
-  end
-
-
-  def show
   end
 
   def new
@@ -16,13 +13,17 @@ class TicketsController < ApplicationController
   def create
     @ticket = Ticket.new(ticket_params)
     if @ticket.save
-      redirect_to chatroom_path(@ticket)
+      @chatroom = Chatroom.new
+      @chatroom.ticket = @ticket
+      @chatroom.save
+      redirect_to chatroom_path(@chatroom)
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
   def assign
+    # IMPORTANT: Currently just for assigning self to ticket
     # @user = User.find(params[:user_id])
     # # If user params, assing to that user
     # # otherwise, assign to the current user

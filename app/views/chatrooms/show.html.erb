@@ -1,10 +1,7 @@
 <div class="container chatroom">
-  <h1>#<%= @chatroom.id %></h1>
-  <button>Resolved</button>
-  <button>Reassign</button>
-  <input type="text" placeholder="search">
-  <div class="messages">
-    <%= @ticket.content %>
+  <h1 class="mb-2">Welcome to your Chatroom #<%= @chatroom.ticket.id %></h1>
+  <h3 class="mb-5"> Ticket : <%= @chatroom.ticket.content %></h3>
+  <div class="messages mb-4">
     <% @chatroom.messages.each do |message| %>
       <div id="message-<%= message.id %>">
         <small>
@@ -15,4 +12,13 @@
       </div>
     <% end %>
   </div>
+  <div class="mb-5">
+    <%= simple_form_for([@chatroom, @message]) do |f| %>
+      <%= f.input :content, label: "New Message" %>
+      <%= f.button :submit, class: "btn btn-primary" %>
+    <% end %>
+
+  </div>
+  <button>Resolved</button>
+  <button>Reassign</button>
 </div>
