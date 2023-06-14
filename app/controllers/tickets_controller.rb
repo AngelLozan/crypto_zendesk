@@ -30,9 +30,7 @@ class TicketsController < ApplicationController
     # # otherwise, assign to the current user
     @ticket.user = current_user
       # if @ticket.save
-      #   @chatroom =
-      #   @chatroom.ticket = @ticket
-      #   @chatroom.save
+      #   @chatroom = @ticket.chatroom
       #   redirect_to chatroom_path(@chatroom)
       # else
       #   render :index, status: :unprocessable_entity
