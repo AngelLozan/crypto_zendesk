@@ -37,7 +37,7 @@
 
   <tbody>
      <% @tickets.reverse.each do |ticket| %>
-      <tr>
+      <tr onclick="window.location='<%= show_ticket_path(ticket) %>';">
         <th scope="row"><%= ticket.id %></th>
           <td><%= ticket.subject %></td>
           <td><%= ticket.client_email %></td>
