@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'home/index'
   devise_for :users
   root to: "pages#home"
   resources :tickets, only: [:index, :show, :new, :create, :edit, :update]
