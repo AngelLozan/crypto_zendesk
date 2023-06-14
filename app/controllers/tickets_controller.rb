@@ -47,8 +47,8 @@ class TicketsController < ApplicationController
 
   def show
     @ticket = Ticket.find_by(id: params[:id])
-    if @ticket.nil?
-    end
+    # if @ticket.nil?
+    # end
   end
 
   private
