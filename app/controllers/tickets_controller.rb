@@ -6,10 +6,6 @@ class TicketsController < ApplicationController
     @tickets = Ticket.all
   end
 
-
-  def show
-  end
-
   def new
     @ticket = Ticket.new
   end
@@ -17,7 +13,10 @@ class TicketsController < ApplicationController
   def create
     @ticket = Ticket.new(ticket_params)
     if @ticket.save
-      redirect_to chatroom_path(@ticket)
+      @chatroom = Chatroom.new
+      @chatroom.ticket = @ticket
+      @chatroom.save
+      redirect_to chatroom_path(@chatroom)
     else
       render :new, status: :unprocessable_entity
     end
