@@ -301,6 +301,7 @@ DEPENDENCIES
   cloudinary
   debug
   devise
+  dotenv
   dotenv-rails
   faker
   font-awesome-sass (~> 6.1)

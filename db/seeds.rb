@@ -2,6 +2,7 @@ require "faker"
 require "open-uri"
 
 puts "deleting existing data"
+Message.destroy_all
 Ticket.destroy_all
 User.destroy_all
 Chatroom.destroy_all
@@ -14,7 +15,7 @@ users = []
 
 10.times do
   users << User.create!(email: Faker::Internet.email, password: "secret", password_confirmation: "secret")
-  tickets << Ticket.create!(client_email: Faker::Internet.email, content: Faker::Quote.yoda)
+  tickets << Ticket.create!(client_email: Faker::Internet.email, subject: Faker::Lorem.sentence, content: Faker::Quote.yoda)
   puts "created a user, and a ticket"
 end
 puts "done creating users and tickets"

@@ -1,9 +1,10 @@
 class TicketsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[:new]
-  before_action :set_ticket, only: %i[:show, :edit, :update, :assign]
+  skip_before_action :authenticate_user!, only: :new
+  before_action :set_ticket, only: %i[show edit update assign]
 
   def index
     @tickets = Ticket.all
+    @current_user = current_user
   end
 
   def new
@@ -27,7 +28,12 @@ class TicketsController < ApplicationController
     # @user = User.find(params[:user_id])
     # # If user params, assing to that user
     # # otherwise, assign to the current user
-    @ticket.user = current_user
+    if @ticket.update(user: current_user)
+      @chatroom = @ticket.chatroom
+      redirect_to chatroom_path(@chatroom)
+    else
+      render :index, status: :unprocessable_entity
+    end
   end
 
   def edit
@@ -38,6 +44,14 @@ class TicketsController < ApplicationController
     @ticket = Ticket.find(params[:id])
     @ticket.update(params[:ticket])
   end
+  
+  def show
+    @ticket = Ticket.find_by(id: params[:id])
+    if @ticket.nil?
+    end
+  end
+  
+
 
   private
 
