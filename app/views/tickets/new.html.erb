@@ -3,22 +3,25 @@
   <div class="d-flex justify-content-center my-3">
     <h1>Contact Support</h1>
   </div>
-
   <div class="d-flex justify-content-center my-3">
-    <button type="button" data-action="click->wallet#open" class="btn btn-primary">Connect Wallet</button>
+    <button data-wallet-target="buttonOpen" data-action="click->wallet#openModal" class="btn btn-open">Connect Wallet</button>
   </div>
 
-  <!-- Modal -->
-  <div data-wallet-target="modal" class="modal fade" id="walletModalCenter" tabindex="-1" role="dialog" aria-labelledby="Wallet modal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Metamask</button>
-          <button type="button" class="btn btn-primary">Phantom</button>
-          <button type="button" class="btn btn-primary">Wallet Connect</button>
-      </div>
+<div class="d-flex align-items-center justify-content-center  my-3">
+
+  <section data-wallet-target="modal" class="modal hidden">
+    <div class="flex">
+      <button data-wallet-target="buttonClose" data-action="click->wallet#closeModal" class="btn-close">X</button>
     </div>
-  </div>
+    <button data-action="click->wallet#" class="btn">Metamask</button>
+    <button data-action="click->wallet#phantomConnect" class="btn">Phantom</button>
+    <button data-action="click->wallet#" class="btn">Wallet Connect</button>
+    <button data-action="click->wallet#" class="btn">Exodus</button>
+  </section>
 
+  <div data-wallet-target="overlay" data-action="click->wallet#closeModal" class="overlay hidden"></div>
+
+</div>
 
   <%= simple_form_for(@ticket) do |f| %>
    <%= f.error :base %>
@@ -26,7 +29,7 @@
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
     <div class="form-inputs">
-      <%= f.input :wallet_address, :label => 'Wallet Address' %>
+      <%= f.input :wallet_address, label: 'Wallet Address', input_html: { data: {wallet_target: "address"} } %>
       <%= f.input :client_email, :label => 'Your email' %>
       <%= f.input :subject, :label => 'Topic of the ticket' %>
       <%= f.input :content, :label => 'Message' %>
