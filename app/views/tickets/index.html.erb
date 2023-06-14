@@ -23,7 +23,7 @@
 </div>
 
 
-<table class="table">
+<table class="table table-hover">
     <thead>
       <tr>
         <th scope="col">Ticket ID</th>
@@ -34,23 +34,28 @@
         <th scope="col"><i class="fa-solid fa-user-plus"></i></th>
       </tr>
     </thead>
-
-  <tbody>
-  <a href="">
-    <% @tickets.each do |ticket| %>
-        <tr>
-          <th scope="row"><%= ticket.id %></th>
-            <td>Subject placeholder</td>
-            <td><%= ticket.client_email %></td>
-            <td><%= ticket.updated_at %></td>
-            <% if ticket.assigned? %>
-              <td><%= ticket.user.first_name %></td>
-            <% else %>
-              <td>Unassigned</td>
-            <% end %>
-          <td><%= link_to "Assign to me", assign_ticket_path(ticket), class: "btn btn-primary text-light rounded shadow-sm" %></td>
-        </tr>
-    <% end %>
-  </tbody>
+<tbody>
+  <% @tickets.reverse.each do |ticket| %>
+    <tr onclick="window.location='<%= show_ticket_path(ticket) %>';">
+      <th scope="row"><%= ticket.id %></th>
+      <td><%= ticket.subject %></td>
+      <td><%= ticket.client_email %></td>
+      <td><%= ticket.updated_at %></td>
+      <% if ticket.assigned? %>
+        <td><%= ticket.user.first_name %></td>
+      <% else %>
+        <td>Unassigned</td>
+      <% end %>
+      <td><%= link_to "Assign to me", assign_ticket_path(ticket), class: "btn btn-primary text-light rounded shadow-sm" %></td>
+    </tr>
+  <% end %>
+</tbody>
 </table>
 </div>
+
+<style>
+  .table-hover tbody tr:hover {
+    background-color: #f5f5f5;
+    cursor: pointer;
+  }
+</style>
