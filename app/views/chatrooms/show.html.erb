@@ -1,24 +1,82 @@
-<div class="container chatroom">
-  <h1 class="mb-2">Welcome to your Chatroom #<%= @chatroom.ticket.id %></h1>
-  <h3 class="mb-5"> Ticket : <%= @chatroom.ticket.content %></h3>
-  <div class="messages mb-4">
+<div class="container-fluid">
+  <% if user_signed_in? %>
+    <h3 class="mb-5">Ticket: <%= @chatroom.ticket.subject %></h3>
     <% @chatroom.messages.each do |message| %>
-      <div id="message-<%= message.id %>">
-        <small>
-          <strong><%= message.email_address %></strong>
-          <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-        </small>
-        <p><%= message.content %></p>
-      </div>
-    <% end %>
-  </div>
-  <div class="mb-5">
-    <%= simple_form_for([@chatroom, @message]) do |f| %>
-      <%= f.input :content, label: "New Message" %>
-      <%= f.button :submit, class: "btn btn-primary" %>
+      <% if message.email_address == @chatroom.ticket.user.email %>
+        <div class="col-6 agent-messages-display mb-4">
+          <div id="message-<%= message.id %>" class="message">
+            <small class="message-meta">
+              <strong><%= @chatroom.ticket.user.first_name %></strong>
+              <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+            </small>
+            <p class="message-content"><%= message.content %></p>
+          </div>
+        </div>
+      <% else %>
+        <div class="col-6 client-messages-display mb-4">
+          <div id="message-<%= message.id %>" class="message">
+            <small class="message-meta">
+              <strong><%= message.email_address %></strong>
+              <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+            </small>
+            <p class="message-content"><%= message.content %></p>
+          </div>
+        </div>
+      <% end %>
     <% end %>
 
-  </div>
-  <button>Resolved</button>
-  <button>Reassign</button>
+    <div class="new-message mb-5">
+      <%= simple_form_for([@chatroom, @message]) do |f| %>
+        <div class="form-group">
+          <%= f.input :content, label: "New Message", input_html: { class: "form-control" } %>
+          <%= f.hidden_field :email_address, value: @chatroom.ticket.user.email %>
+        </div>
+        <%= f.button :submit, "Send", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+    <button>Resolved</button>
+    <button>Reassign</button>
+  <% else %>
+    <% if @chatroom.ticket.user.present? %>
+      <h1 class="mb-2">Welcome to your Chatroom! <%= @chatroom.ticket.user.first_name %> is here to help you!</h1>
+      <h3 class="mb-5">Ticket: <%= @chatroom.ticket.subject %></h3>
+      <% @chatroom.messages.each do |message| %>
+        <% if message.email_address == @chatroom.ticket.user.email %>
+          <div class="col-6 agent-messages-display mb-4">
+            <div id="message-<%= message.id %>" class="message">
+              <small class="message-meta">
+                <strong><%= @chatroom.ticket.user.first_name %></strong>
+                <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+              </small>
+              <p class="message-content"><%= message.content %></p>
+            </div>
+          </div>
+        <% else %>
+          <div class="col-6 client-messages-display mb-4">
+            <div id="message-<%= message.id %>" class="message">
+              <small class="message-meta">
+                <strong><%= message.email_address %></strong>
+                <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+              </small>
+              <p class="message-content"><%= message.content %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+
+      <div class="new-message mb-5">
+        <%= simple_form_for([@chatroom, @message]) do |f| %>
+          <div class="form-group">
+            <%= f.input :content, label: "New Message", input_html: { class: "form-control" } %>
+            <%= f.hidden_field :email_address, value: @chatroom.ticket.client_email %>
+          </div>
+          <%= f.button :submit, "Send", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+
+    <% else %>
+      <h1 class="mb-2">Welcome to your Chatroom! A support agent will be here soon</h1>
+      <h3 class="mb-5">Ticket: <%= @chatroom.ticket.subject %></h3>
+    <% end %>
+  <% end %>
 </div>
