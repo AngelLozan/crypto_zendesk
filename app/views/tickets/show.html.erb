@@ -1,0 +1,37 @@
+<div class="container">
+  <h1 class="my-4">Ticket Details</h1>
+  
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">Ticket ID</h5>
+      <p class="card-text"><%= @ticket.id %></p>
+    </div>
+  </div>
+  
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">Subject</h5>
+      <p class="card-text"><%= @ticket.subject %></p>
+    </div>
+  </div>
+  
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">Requester</h5>
+      <p class="card-text"><%= @ticket.client_email %></p>
+    </div>
+
+    <%= link_to "Back to Tickets", tickets_path, class: "btn btn-primary" %>
+  </div>
+
+  </div>
+</div>
+
+<style>
+  .table-hover tbody tr:hover {
+    background-color: #f5f5f5;
+    cursor: pointer;
+  }
+</style>
+
+
