@@ -11,12 +11,12 @@
   </head>
 
   <body>
-  <div class="d-flex">
-    <%= render "shared/flashes" %>
-    <%= render "shared/navbar" %>
-    <div>
-      <%= yield %>
+    <div class= '<%="d-flex" if current_user %> ' >
+      <%= render "shared/flashes" %>
+      <%= render (current_user ? 'shared/vertical_navbar' : "shared/navbar")%>
+      <div>
+        <%= yield %>
+      </div>
     </div>
-  </div>
   </body>
 </html>
