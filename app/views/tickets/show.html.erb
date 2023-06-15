@@ -22,6 +22,7 @@
     </div>
 
     <%= link_to "Back to Tickets", tickets_path, class: "btn btn-primary" %>
+    <%= link_to "Assign to me", assign_ticket_path(@ticket), data: {turbo_method: :patch}, class: "btn btn-primary text-light rounded shadow-sm" %>
   </div>
 
   </div>
