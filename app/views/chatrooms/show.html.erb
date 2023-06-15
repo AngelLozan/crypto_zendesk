@@ -3,98 +3,93 @@
 <div class="container-fluid moved" data-controller="explorer">
 
   <% if user_signed_in? %>
-    <div class="my-3">
-  <%= simple_form_for :search, data: { action: "click->explorer#search" } do |f| %>
-  <div class="search-form-control form-group">
-    <%= f.input :query, label: false, input_html: { data: { "explorer-target": "sourceInput"} }, class: "form-control" %>
-    <%# <div data-explorer-target="snackbar" id="snackbar"></div> %>
-    <%= f.button :button, type:"submit", class: "btn btn-flat" do %>
-      <i class="fas fa-search"></i>
-    <% end %>
-  </div>
-<% end %>
+    <div class="row ticket-header ">
+      <div class="col-2">
+        <%= link_to "Back to Tickets", tickets_path, class: "btn btn-primary", style: "width: 100%" %>
+      </div>
 
+      <div class="col-8 text-center">
+        <h1>Ticket #<%= @chatroom.ticket.id %> : <%= @chatroom.ticket.subject.capitalize %></h1>
+      </div>
+
+      <div class="col-2">
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" id="statusDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Status
+          </button>
+          <div class="dropdown-menu" aria-labelledby="statusDropdown">
+            <a class="dropdown-item" href="#">To Do</a>
+            <a class="dropdown-item" href="#">Doing</a>
+            <a class="dropdown-item" href="#">Done</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row ticket-infos">
+      <div class="col-3">
+        <div class="card-body col-12">
+          <p><strong>Requester :</strong> <%= @chatroom.ticket.client_email %></p>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="card-body">
+          <p><strong>Wallet :</strong> <%= @chatroom.ticket.wallet_address %></p>
+        </div>
+      </div>
+      <div class="col-6">
+        <%= simple_form_for :search, class: "col-6",data: { action: "click->explorer#search" } do |f| %>
+          <div class="search-form-control form-group">
+            <%= f.input :query, label: false, input_html: { data: { "explorer-target": "sourceInput"} }, class: "form-control", placeholder: "Enter your client's wallet/transactions informations here"%>
+            <%# <div data-explorer-target="snackbar" id="snackbar"></div> %>
+            <%= f.button :button, type:"submit", class: "btn btn-flat" do %>
+              <i class="fas fa-search"></i>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  <% else %>
+    <div class="row ticket-header">
+      <h1 class="mb-4 text-center">Welcome to your LiveChat !</h1>
     </div>
   <% end %>
+  <div class="row mb-4">
+    <div class="col-4">
+      <div class="card-body col-12">
+        <p><strong>Your email :</strong> <%= @chatroom.ticket.client_email %></p>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card-body">
+        <p><strong>Wallet :</strong> <%= @chatroom.ticket.wallet_address %></p>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card-body col-12">
+        <p><strong>Your issue :</strong> <%= @chatroom.ticket.content %></p>
+      </div>
+    </div>
+  </div>
 
-  <% if user_signed_in? %>
-    <h3 class="mb-5">Ticket: <%= @chatroom.ticket.subject %></h3>
-    <% @chatroom.messages.each do |message| %>
-      <% if message.email_address == @chatroom.ticket.user.email %>
-        <div class="col-6 agent-messages-display mb-4">
-          <div id="message-<%= message.id %>" class="message">
-            <small class="message-meta">
-              <strong><%= @chatroom.ticket.user.first_name %></strong>
-              <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-            </small>
-            <p class="message-content"><%= message.content %></p>
-          </div>
-        </div>
-      <% else %>
-        <div class="col-6 client-messages-display mb-4">
-          <div id="message-<%= message.id %>" class="message">
-            <small class="message-meta">
-              <strong><%= message.email_address %></strong>
-              <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-            </small>
-            <p class="message-content"><%= message.content %></p>
-          </div>
-        </div>
+  <div class="row justify-content-center">
+    <div class="col-8 messages-container m-2"
+    data-controller="chatroom-subscription"
+    data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
+    >
+      <% @chatroom.messages.each do |message| %>
+        <%= render "messages/message", message: message %>
       <% end %>
-    <% end %>
+    </div>
 
-    <div class="new-message mb-5">
+    <div class="col-3 new-message-container m-2">
       <%= simple_form_for([@chatroom, @message]) do |f| %>
         <div class="form-group">
-          <%= f.input :content, label: "New Message", input_html: { class: "form-control" } %>
-          <%= f.hidden_field :email_address, value: @chatroom.ticket.user.email %>
+          <%= f.input :content, label: "New Message", input_html: { class: "form-control", style: "width: 100%; height: 370px;" } %>
         </div>
         <%= f.button :submit, "Send", class: "btn btn-primary" %>
       <% end %>
     </div>
-    <button>Resolved</button>
-    <button>Reassign</button>
-  <% else %>
-    <% if @chatroom.ticket.user.present? %>
-      <h1 class="mb-2">Welcome to your Chatroom! <%= @chatroom.ticket.user.first_name %> is here to help you!</h1>
-      <h3 class="mb-5">Ticket: <%= @chatroom.ticket.subject %></h3>
-      <% @chatroom.messages.each do |message| %>
-        <% if message.email_address == @chatroom.ticket.user.email %>
-          <div class="col-6 agent-messages-display mb-4">
-            <div id="message-<%= message.id %>" class="message">
-              <small class="message-meta">
-                <strong><%= @chatroom.ticket.user.first_name %></strong>
-                <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-              </small>
-              <p class="message-content"><%= message.content %></p>
-            </div>
-          </div>
-        <% else %>
-          <div class="col-6 client-messages-display mb-4">
-            <div id="message-<%= message.id %>" class="message">
-              <small class="message-meta">
-                <strong><%= message.email_address %></strong>
-                <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-              </small>
-              <p class="message-content"><%= message.content %></p>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
-
-      <div class="new-message mb-5">
-        <%= simple_form_for([@chatroom, @message]) do |f| %>
-          <div class="form-group">
-            <%= f.input :content, label: "New Message", input_html: { class: "form-control" } %>
-            <%= f.hidden_field :email_address, value: @chatroom.ticket.client_email %>
-          </div>
-          <%= f.button :submit, "Send", class: "btn btn-primary" %>
-        <% end %>
-      </div>
-
-    <% else %>
-      <h1 class="mb-2">Welcome to your Chatroom! A support agent will be here soon</h1>
-      <h3 class="mb-5">Ticket: <%= @chatroom.ticket.subject %></h3>
-    <% end %>
-  <% end %>
-</div>
+  </div>
+</div>v
