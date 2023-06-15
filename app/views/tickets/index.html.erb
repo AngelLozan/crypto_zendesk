@@ -43,6 +43,7 @@
           <td><%= ticket.subject %></td>
           <td><%= ticket.client_email %></td>
           <td><%= ticket.updated_at %></td>
+          <td><%= ticket.status%></td>
           <% if ticket.user.present? %>
             <td><%= ticket.user.first_name.capitalize %> <%= ticket.user.last_name.capitalize %></td>
           <% else %>
