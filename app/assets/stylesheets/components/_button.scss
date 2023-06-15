@@ -1,0 +1,54 @@
+.btn-navbar {
+  color: $white;
+  background-color: $cyan;
+  border-radius: 50px;
+  margin-left: 24px;
+  padding: 8px 24px;
+}
+
+.btn-navbar:hover {
+  background: $darkblue;
+  color: white;
+}
+
+.btn-primary {
+  text-decoration: none;
+  color: white;
+  padding: 8px 24px;
+  border-radius: 8px;
+  background: $verylightblue;
+  transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: $darkblue;
+  color: white;
+}
+
+.btn-gradient {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  font-weight: bold;
+  background: linear-gradient(#167FFB, #0F60C4);
+  transition: background 0.3s ease;
+  border: 1px solid #0F60C4;
+}
+
+.btn-gradient:hover {
+  background: linear-gradient(#147EFF, #0F67DA);
+  color: white;
+}
+
+.btn-delete {
+  color: $white;
+  padding: 4px 16px;
+  border-radius: 4px;
+  background: $red;
+  transition: background 0.3s ease;
+}
+
+.btn-delete:hover {
+  background: $red;
+  color: $black;
+}
