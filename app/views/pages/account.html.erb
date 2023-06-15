@@ -4,8 +4,8 @@
         <div class="account-card">
           <h2 class="mb-4">My Account</h2>
           <div class="image">
-            <% unless @user.photo.key.nil? %>
-              <%= cl_image_tag @user.photo.key, height: 100, width: 100, crop: :fill%>
+            <% unless @current_user.photo.key.nil? %>
+              <%= cl_image_tag @current_user.photo.key, height: 100, width: 100, crop: :fill%>
             <% end %>
           </div>
           <p><strong>First Name: </strong><%= @user.first_name %></p>
