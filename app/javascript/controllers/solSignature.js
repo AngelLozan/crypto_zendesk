@@ -5,7 +5,7 @@ import { Connection } from "@solana/web3.js";
 const validateSignature = async (tx) => {
     try {
         let connection = new Connection(
-            "https://api.mainnet-beta.solana.com",
+            "https://solana-mainnet.g.alchemy.com/v2/0j50Mrq1vQS71LJZ0JcmI_LSmdqOncbu",
             "confirmed"
         );
         let transaction = await connection.getParsedTransaction(tx);

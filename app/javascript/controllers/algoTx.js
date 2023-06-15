@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const getAlgoData = async (source) => {
 
-let api = 'https://algoindexer.algoexplorerapi.io/v2/transactions?txid=';
+let api = 'https://mainnet-idx.algonode.network/v2/transactions/';
 let tx = source;
 
   try {
@@ -25,4 +25,3 @@ let tx = source;
 }
 
 export default getAlgoData;
-

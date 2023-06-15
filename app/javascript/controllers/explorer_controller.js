@@ -1,7 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 import validateSolAddress from "./solana.js";
 import validateSignature from "./solSignature.js";
-import existingTabCheck from "./existingTab.js";
 import getAlgoData from './algoTx.js';
 import moneroText from './moneroText.js';
 import lookUpText from './lookUpText.js';
