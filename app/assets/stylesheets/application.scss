@@ -14,13 +14,16 @@
 
 .moved {
   margin-left: 100px;
-
 }
 
 body {
   color: $verydarkblue;
 }
 
-table {
-  color: $verydarkblue;
+tbody > * > * {
+  color: $verydarkblue !important;
+}
+
+.card-body {
+  color: $verydarkblue !important;
 }
