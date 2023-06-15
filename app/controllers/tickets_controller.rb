@@ -5,6 +5,7 @@ class TicketsController < ApplicationController
   def index
     @tickets = Ticket.all
     @current_user = current_user
+  end
 
   def show
   end

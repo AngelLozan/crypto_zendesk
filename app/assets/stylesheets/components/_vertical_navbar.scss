@@ -1,0 +1,19 @@
+.vertical-navbar{
+  justify-content: space-between;
+  background: white;
+  height: 100vh;
+  width: 100px;
+  position: sticky;
+  top: 0;
+  .nav-link {
+    padding-left: 0;
+  }
+}
+
+.vertical-navbar .navbar-collapse {
+  flex-grow: 0;
+}
+
+.vertical-navbar .navbar-brand img {
+  width: 40px;
+}
