@@ -17,7 +17,7 @@ class TicketsController < ApplicationController
       @chatroom = Chatroom.new
       @chatroom.ticket = @ticket
       @chatroom.save
-      redirect_to chatroom_path(@chatroom)
+      redirect_to chatroom_path(@chatroom.id)
     else
       render :new, status: :unprocessable_entity
     end
@@ -47,6 +47,7 @@ class TicketsController < ApplicationController
 
   def show
     @ticket = Ticket.find_by(id: params[:id])
+    @current_user = current_user
     # if @ticket.nil?
     # end
   end

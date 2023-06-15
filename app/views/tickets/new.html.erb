@@ -29,7 +29,7 @@
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
     <div class="form-inputs">
-      <%= f.input :wallet_address, label: 'Wallet Address', input_html: { data: {wallet_target: "address"} } %>
+      <%= f.input :wallet_address, label: 'Wallet Address', input_html: { data: {wallet_target: "address"}, style: 'color: black;' } %>
       <%= f.input :client_email, :label => 'Your email' %>
       <%= f.input :subject, :label => 'Topic of the ticket' %>
       <%= f.input :content, :label => 'Message' %>

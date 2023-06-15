@@ -1,4 +1,6 @@
-<div class="container-fluid">
+<%= render 'shared/vertical_navbar'%>
+
+<div class="container moved">
   <h1 class="my-4">Ticket Details</h1>
 
   <div class="card mb-3">
@@ -20,9 +22,9 @@
       <h5 class="card-title">Requester</h5>
       <p class="card-text"><%= @ticket.client_email %></p>
     </div>
-
-    <%= link_to "Back to Tickets", tickets_path, class: "btn btn-primary" %>
-    <%= link_to "Go to chatroom", chatroom_path(@ticket.chatroom), class: "btn btn-primary" %>
+    
+  <%= link_to "Back to Tickets", tickets_path, class: "btn btn-primary mt-3 mb-3" %>
+  <%= link_to "Assign to me", assign_ticket_path(@ticket), data: {turbo_method: :patch}, class: "btn btn-primary text-light rounded shadow-sm" %>
 
   </div>
 </div>

@@ -13,7 +13,7 @@
   <body>
     <div class= '<%="d-flex" if current_user %> ' >
       <%= render "shared/flashes" %>
-      <%= render (current_user ? 'shared/vertical_navbar' : "shared/navbar")%>
+      <%# <%= render 'shared/vertical_navbar', home: false %>
       <%= yield %>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
