@@ -37,7 +37,7 @@ class TicketsController < ApplicationController
     else
       render :index, status: :unprocessable_entity
     end
-    
+
   end
 
   def edit
@@ -51,6 +51,7 @@ class TicketsController < ApplicationController
 
   def show
     @ticket = Ticket.find_by(id: params[:id])
+    @current_user = current_user
     # if @ticket.nil?
     # end
   end
