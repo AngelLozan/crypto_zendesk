@@ -54,24 +54,24 @@
     <div class="row ticket-header">
       <h1 class="mb-4 text-center">Welcome to your LiveChat !</h1>
     </div>
+    <div class="row mb-4">
+      <div class="col-4">
+        <div class="card-body col-12">
+          <p><strong>Your email :</strong> <%= @chatroom.ticket.client_email %></p>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card-body">
+          <p><strong>Wallet :</strong> <%= @chatroom.ticket.wallet_address %></p>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card-body col-12">
+          <p><strong>Your issue :</strong> <%= @chatroom.ticket.content %></p>
+        </div>
+      </div>
+    </div>
   <% end %>
-  <div class="row mb-4">
-    <div class="col-4">
-      <div class="card-body col-12">
-        <p><strong>Your email :</strong> <%= @chatroom.ticket.client_email %></p>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="card-body">
-        <p><strong>Wallet :</strong> <%= @chatroom.ticket.wallet_address %></p>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="card-body col-12">
-        <p><strong>Your issue :</strong> <%= @chatroom.ticket.content %></p>
-      </div>
-    </div>
-  </div>
 
   <div class="row justify-content-center">
     <div class="col-8 messages-container m-2"
@@ -92,4 +92,4 @@
       <% end %>
     </div>
   </div>
-</div>v
+</div>
