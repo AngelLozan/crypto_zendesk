@@ -13,6 +13,8 @@
   height: 3.5rem;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   border: 1px solid #E7E7E7;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .search-form-control .form-control:focus {
@@ -27,6 +29,7 @@
   border-radius: 4px;
   background: #670BFF;
   transition: background 0.3s ease;
+  height: fit-content;
 }
 
 .btn-flat:hover {
@@ -51,10 +54,10 @@
   /* Sit on top of the screen */
   z-index: 1;
   /* Add a z-index if needed */
-  left: 10%;
-  /* Bring the snackbar closer to exodude*/
+  left: 20%;
+  /* Bring the snackbar closer to icon*/
   right: 60%;
-  top: 20px;
+  top: 80px;
 }
 
 #snackbar:after {
@@ -62,7 +65,7 @@
   z-index: -1;
   position: absolute;
   left: 0;
-  top: 20%;
+  top: 30%;
   width: 0;
   height: 0;
   border: 20px solid transparent;
@@ -132,7 +135,7 @@ However, delay the fade out process for 2.5 seconds */
   }
 
   to {
-      top: 20px;
+      top: 80px;
       opacity: 1;
   }
 }
@@ -144,14 +147,14 @@ However, delay the fade out process for 2.5 seconds */
   }
 
   to {
-      top: 20px;
+      top: 60px;
       opacity: 1;
   }
 }
 
 @-webkit-keyframes fadeout {
   from {
-      top: 20px;
+      top: 60px;
       opacity: 1;
   }
 
@@ -163,7 +166,7 @@ However, delay the fade out process for 2.5 seconds */
 
 @keyframes fadeout {
   from {
-      top: 20px;
+      top: 60px;
       opacity: 1;
   }
 
