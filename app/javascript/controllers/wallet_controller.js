@@ -16,6 +16,9 @@ export default class extends Controller {
     console.log(this.projectIdValue);
     this.solanaProvider = await this.getSolanaProvider();
     this.web3Modal = await this.getWalletConnect();
+    if (typeof window.ethereum !== 'undefined') {
+      console.log('MetaMask is installed!');
+    }
     console.log(this.solanaProvider);
     console.log(this.web3Modal);
   }
@@ -46,6 +49,30 @@ export default class extends Controller {
       const resp = await window.phantom.solana.connect()
       console.log(resp.publicKey.toString());
       this.addressTarget.value = await resp.publicKey.toString();
+      this.closeModal();
+    } catch (err) {
+      console.log(err.message);
+    }
+  }
+
+  async exodusConnect() {
+    try {
+      console.log("exodusConnect")
+      const resp = await window.algorand.enable();
+      console.log(resp);
+      this.addressTarget.value = await resp.accounts[0];
+      this.closeModal();
+    } catch (err) {
+      console.log(err.message);
+    }
+  }
+
+  async metamaskConnect() {
+    try {
+      console.log("metamaskConnect")
+      const account = await window.ethereum.request({ method: 'eth_requestAccounts' });
+      console.log(account);
+      this.addressTarget.value = await account[0];
       this.closeModal();
     } catch (err) {
       console.log(err.message);
