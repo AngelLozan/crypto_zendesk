@@ -7,6 +7,9 @@ class TicketsController < ApplicationController
     @current_user = current_user
   end
 
+  def show
+  end
+
   def new
     @ticket = Ticket.new
   end
