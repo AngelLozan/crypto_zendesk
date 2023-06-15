@@ -5,24 +5,9 @@ class TicketsController < ApplicationController
   def index
     @tickets = Ticket.all
     @current_user = current_user
-    # Search
-    # if params[:search].present?
-    #   search_query = params[:search].downcase
-    #   @tickets = @tickets.where("lower(title) LIKE ? OR lower(description) LIKE ?", "%#{search_query}%", "%#{search_query}%")
-    # end
+  end
 
-    # # Sort
-    # if params[:sort].present?
-    #   sort_by = params[:sort]
-    #   case sort_by
-    #   when 'status'
-    #     @tickets = @tickets.order(status: :asc)
-    #   when 'priority'
-    #     @tickets = @tickets.order(priority: :desc)
-    #   when 'timestamp'
-    #     @tickets = @tickets.order(created_at: :desc)
-    #   end
-    # end
+  def show
   end
 
   def new
