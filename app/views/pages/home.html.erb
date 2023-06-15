@@ -1,12 +1,16 @@
-<div class="container h-100">
-  <div class="row">
-    <div class="col-8">
+<%= render "shared/navbar", home: true %>
+
+<div class="home-container">
+  <div class="row m-3 justify-content-center">
+    <div class="col-12">
       <h1>Seamless Support for Web3</h1>
       <p>Our customer support app revolutionizes the decentralized web experience, offering real-time assistance, and proactive solutions to navigate the intricacies of Web 3 technologies.</p>
     </div>
-    <div class="col-4">
-      <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+    <div class="col-12 mt-3 mb-3">
       <%= link_to "An issue ? Create a ticket", new_ticket_path, class: "btn btn-primary text-light rounded shadow-sm" %>
+    </div>
+    <div class="col-7 mt-3 justify-content-center">
+      <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img src="https://as2.ftcdn.net/v2/jpg/03/06/82/35/1000_F_306823504_TYT9uCN3CXoBf3u1G5nvA49Ab1RyazYu.jpg" class="d-block w-100" alt="...">
@@ -20,5 +24,13 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+ <div class="footer">
+  <div class="footer-links">
+  <a href="https://github.com/AngelLozan/crypto_zendesk" target=”_blank”><i class="fab fa-github"></i></a>
+  </div>
+  <div class="footer-copyright">
+    ChainCare is created with <i class="fas fa-heart"></i> by Tobi, Scott, Dorothy, Corentin, Elena
   </div>
 </div>

@@ -1,20 +1,22 @@
+<%= render 'shared/vertical_navbar'%>
+
 <div class="container">
   <h1 class="my-4">Ticket Details</h1>
-  
+
   <div class="card mb-3">
     <div class="card-body">
       <h5 class="card-title">Ticket ID</h5>
       <p class="card-text"><%= @ticket.id %></p>
     </div>
   </div>
-  
+
   <div class="card mb-3">
     <div class="card-body">
       <h5 class="card-title">Subject</h5>
       <p class="card-text"><%= @ticket.subject %></p>
     </div>
   </div>
-  
+
   <div class="card mb-3">
     <div class="card-body">
       <h5 class="card-title">Requester</h5>
@@ -33,5 +35,3 @@
     cursor: pointer;
   }
 </style>
-
-
