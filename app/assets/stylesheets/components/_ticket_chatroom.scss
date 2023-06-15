@@ -1,0 +1,74 @@
+.ticket-header {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-bottom: 1px solid #dee2e6;
+  margin-bottom: 20px;
+}
+
+.ticket-infos {
+  border-bottom: 1px solid #dee2e6;
+  margin-bottom: 20px;
+  padding: 3px;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.card-body {
+  background-color: $white;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  height: 3.5rem;
+  padding-left: 4px;
+  border: 1px solid #E7E7E7;
+  padding: 0.375rem 0.75rem;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.card-body p {
+  margin: 1px 0;
+}
+
+.chat {
+  background-color: $white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  padding: 24px;
+}
+
+.message {
+  background-color: $white;
+  box-shadow: 0 1px 6px $verylightblue;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.message-meta {
+  color: #999999;
+  font-size: 12px;
+}
+
+.message-content {
+  margin: 5px;
+}
+
+.messages-container {
+  border: 1px solid #E7E7E7;
+  border-radius: 8px;
+  padding: 15px;
+  height: 500px;
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.new-message-container {
+  border: 1px solid #E7E7E7;
+  border-radius: 8px;
+  padding: 15px;
+  height: 500px;
+}

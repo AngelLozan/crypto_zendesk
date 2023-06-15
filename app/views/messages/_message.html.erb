@@ -1,0 +1,25 @@
+<% if message.email_address == @chatroom.ticket.user.email %>
+  <div class="row justify-content-end">
+    <div class="col-6 messages-display">
+      <div id="message-<%= message.id %>" class="message">
+        <small class="message-meta">
+          <strong><%= @chatroom.ticket.user.first_name %></strong>
+          <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+        </small>
+        <p class="message-content"><%= message.content %></p>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="row justify-content-start">
+    <div class="col-6 messages-display">
+      <div id="message-<%= message.id %>" class="message">
+        <small class="message-meta">
+          <strong><%= message.email_address %></strong>
+          <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+        </small>
+        <p class="message-content"><%= message.content %></p>
+      </div>
+    </div>
+  </div>
+<% end %>

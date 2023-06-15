@@ -1,20 +1,20 @@
-<div class="container">
+<div class="container-fluid">
   <h1 class="my-4">Ticket Details</h1>
-  
+
   <div class="card mb-3">
     <div class="card-body">
       <h5 class="card-title">Ticket ID</h5>
       <p class="card-text"><%= @ticket.id %></p>
     </div>
   </div>
-  
+
   <div class="card mb-3">
     <div class="card-body">
       <h5 class="card-title">Subject</h5>
       <p class="card-text"><%= @ticket.subject %></p>
     </div>
   </div>
-  
+
   <div class="card mb-3">
     <div class="card-body">
       <h5 class="card-title">Requester</h5>
@@ -22,7 +22,7 @@
     </div>
 
     <%= link_to "Back to Tickets", tickets_path, class: "btn btn-primary" %>
-  </div>
+    <%= link_to "Go to chatroom", chatroom_path(@ticket.chatroom), class: "btn btn-primary" %>
 
   </div>
 </div>
@@ -33,5 +33,3 @@
     cursor: pointer;
   }
 </style>
-
-
