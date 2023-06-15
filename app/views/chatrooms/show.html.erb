@@ -42,7 +42,7 @@
           <div class="search-form-control form-group">
             <%= f.input :query, label: false, input_html: { data: { "explorer-target": "sourceInput"} }, class: "form-control", placeholder: "Enter your client's wallet/transactions informations here"%>
             <%# <div data-explorer-target="snackbar" id="snackbar"></div> %>
-            <%= f.button :button, type:"submit", class: "btn btn-flat" do %>
+            <%= f.button :button, type:"submit", class: "btn btn-primary" do %>
               <i class="fas fa-search"></i>
             <% end %>
           </div>
@@ -88,7 +88,7 @@
         <div class="form-group">
           <%= f.input :content, label: "New Message", input_html: { class: "form-control", style: "width: 100%; height: 370px;" } %>
         </div>
-        <%= f.button :submit, "Send", class: "btn btn-primary" %>
+        <%= f.button :submit, "Send", class: "btn btn-flat" %>
       <% end %>
     </div>
   </div>

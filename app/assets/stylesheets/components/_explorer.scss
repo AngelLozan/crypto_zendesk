@@ -23,20 +23,6 @@
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
-.btn-flat {
-  color: white;
-  padding: 8px 24px;
-  border-radius: 4px;
-  background: #670BFF;
-  transition: background 0.3s ease;
-  height: fit-content;
-}
-
-.btn-flat:hover {
-  background: #4D04C4;
-  color: white;
-}
-
 #snackbar {
   visibility: hidden;
   /* Hidden by default. Visible on click */
