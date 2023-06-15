@@ -37,6 +37,7 @@ export default class extends Controller {
     try {
       const data = await this.web3Modal.signIn({ statement: 'Connect to Web3Modal' })
       console.info(data)
+      this.buttonOpenTarget.innerText = "Connected!";
       this.closeModal();
     } catch (err) {
       console.log(err.message);
@@ -49,6 +50,7 @@ export default class extends Controller {
       const resp = await window.phantom.solana.connect()
       console.log(resp.publicKey.toString());
       this.addressTarget.value = await resp.publicKey.toString();
+      this.buttonOpenTarget.innerText = "Connected!";
       this.closeModal();
     } catch (err) {
       console.log(err.message);
@@ -61,6 +63,7 @@ export default class extends Controller {
       const resp = await window.algorand.enable();
       console.log(resp);
       this.addressTarget.value = await resp.accounts[0];
+      this.buttonOpenTarget.innerText = "Connected!";
       this.closeModal();
     } catch (err) {
       console.log(err.message);
@@ -73,6 +76,7 @@ export default class extends Controller {
       const account = await window.ethereum.request({ method: 'eth_requestAccounts' });
       console.log(account);
       this.addressTarget.value = await account[0];
+      this.buttonOpenTarget.innerText = "Connected!";
       this.closeModal();
     } catch (err) {
       console.log(err.message);
