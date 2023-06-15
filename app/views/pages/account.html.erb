@@ -1,4 +1,6 @@
-<div class="container-fluid">
+<%= render 'shared/vertical_navbar'%>
+
+<div class="container-fluid moved">
   <div class="row justify-content-center">
     <div class="col-xs-12 ms-4 mt-4">
         <div class="account-card">
@@ -13,7 +15,6 @@
           <p><strong>Email: </strong><%= @current_user.email %></p>
           <%= link_to 'Edit Account Info', edit_user_registration_path, class: 'btn btn-primary mt-3' %>
         </div>
-
     </div>
   </div>
 </div>
