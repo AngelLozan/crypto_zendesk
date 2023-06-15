@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
   resources :tickets, only: %i[index show new create update]
 
-  patch '/chatrooms/:id', to: "tickets#assign", as: :assign_ticket
+  get '/tickets/:id/assign', to: "tickets#assign", as: :assign_ticket
 
   # patch '/tickets/:ticket_id/users/:user_id', to: "tickets#assign", as: :assign_ticket_to_user #no more than two keys nested. Or else use form.
 
@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   get '/account', to: 'pages#account', as: :account
   get '/tickets/:id', to: 'tickets#show', as: 'show_ticket'
+
 
   
 
