@@ -8,9 +8,9 @@
               <%= cl_image_tag @current_user.photo.key, height: 100, width: 100, crop: :fill%>
             <% end %>
           </div>
-          <p><strong>First Name: </strong><%= @user.first_name %></p>
-          <p><strong>Last Name: </strong><%= @user.last_name %></p>
-          <p><strong>Email: </strong><%= @user.email %></p>
+          <p><strong>First Name: </strong><%= @current_user.first_name %></p>
+          <p><strong>Last Name: </strong><%= @current_user.last_name %></p>
+          <p><strong>Email: </strong><%= @current_user.email %></p>
           <%= link_to 'Edit Account Info', edit_user_registration_path, class: 'btn btn-primary mt-3' %>
         </div>
 
