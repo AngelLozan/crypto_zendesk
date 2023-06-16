@@ -46,7 +46,11 @@
 
   <% else %>
     <div class="row ticket-header">
-      <h1 class="mb-4 text-center">Welcome to your LiveChat !</h1>
+      <% if @chatroom.ticket.user != nil %>
+        <h1 class="mb-4 text-center"><%= @chatroom.ticket.user.first_name %> is here to help!</h1>
+      <% else %>
+        <h1 class="mb-4 text-center">Welcome to your LiveChat, an agent will be with you soon 🕑</h1>
+      <% end %>
     </div>
     <div class="row mb-4">
       <div class="col-4">
