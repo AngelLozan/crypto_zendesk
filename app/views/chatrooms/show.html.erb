@@ -35,7 +35,7 @@
         <%= simple_form_for :search, class: "col-6", data: { action: "click->explorer#search" } do |f| %>
           <div class="search-form-control form-group">
             <%= f.input :query, label: false, input_html: { data: { "explorer-target": "sourceInput"} }, class: "form-control", placeholder: "Enter your client's wallet/transactions informations here"%>
-            <div class="loader" data-explorer-target="loader"></div>
+            <%# <div class="loader" data-explorer-target="loader"></div> %>
             <%= f.button :button, type:"submit", class: "btn btn-primary" do %>
               <i class="fas fa-search"></i>
             <% end %>
