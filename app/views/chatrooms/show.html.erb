@@ -13,16 +13,7 @@
       </div>
 
       <div class="col-2">
-        <div class="dropdown">
-          <button class="btn btn-primary dropdown-toggle" type="button" id="statusDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Status
-          </button>
-          <div class="dropdown-menu" aria-labelledby="statusDropdown">
-            <a class="dropdown-item" href="#">To Do</a>
-            <a class="dropdown-item" href="#">Doing</a>
-            <a class="dropdown-item" href="#">Done</a>
-          </div>
-        </div>
+        <%= button_to "Close Ticket", ticket_path(@chatroom.ticket), method: :patch, params: { ticket: { status: 'closed' } }, class: "btn btn-primary" %>
       </div>
     </div>
 

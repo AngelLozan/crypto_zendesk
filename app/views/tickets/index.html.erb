@@ -39,18 +39,36 @@
 
   <tbody>
      <% @tickets.reverse.each do |ticket| %>
-      <tr onclick="window.location='<%= show_ticket_path(ticket) %>';">
-        <th scope="row"><%= ticket.id %></th>
+      <% if ticket.user.present? %>
+        <% if ticket.user == @current_user %>
+          <tr onclick="window.location='<%= chatroom_path(ticket.chatroom) %>';">
+            <th scope="row"><%= ticket.id %></th>
+            <td><%= ticket.subject %></td>
+            <td><%= ticket.client_email %></td>
+            <td><%= ticket.updated_at %></td>
+            <td><%= ticket.status.capitalize %></td>
+            <td><%= ticket.user.first_name.capitalize %> <%= ticket.user.last_name.capitalize %></td>
+          </tr>
+        <% else %>
+          <tr onclick="window.location='<%= show_ticket_path(ticket) %>';">
+            <th scope="row"><%= ticket.id %></th>
+            <td><%= ticket.subject %></td>
+            <td><%= ticket.client_email %></td>
+            <td><%= ticket.updated_at %></td>
+            <td><%= ticket.status.capitalize %></td>
+            <td><%= ticket.user.first_name.capitalize %> <%= ticket.user.last_name.capitalize %></td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr onclick="window.location='<%= show_ticket_path(ticket) %>';">
+          <th scope="row"><%= ticket.id %></th>
           <td><%= ticket.subject %></td>
           <td><%= ticket.client_email %></td>
           <td><%= ticket.updated_at %></td>
-          <td><%= ticket.status %></td>
-          <% if ticket.user.present? %>
-            <td><%= ticket.user.first_name.capitalize %> <%= ticket.user.last_name.capitalize %></td>
-          <% else %>
-            <td>Unassigned</td>
-          <% end %>
-      </tr>
+          <td><%= ticket.status.capitalize %></td>
+          <td>Unassigned</td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 

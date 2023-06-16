@@ -24,12 +24,9 @@ class TicketsController < ApplicationController
   end
 
   def assign
-    # IMPORTANT: Currently just for assigning self to ticket
-    # @user = User.find(params[:user_id])
-    # # If user params, assing to that user
-    # # otherwise, assign to the current user
     if @ticket.update(user: current_user)
       @chatroom = @ticket.chatroom
+      @ticket.update(status: 1)
       redirect_to chatroom_path(@chatroom)
     else
       render :index, status: :unprocessable_entity
@@ -42,7 +39,8 @@ class TicketsController < ApplicationController
 
   def update
     @ticket = Ticket.find(params[:id])
-    @ticket.update(params[:ticket])
+    @ticket.update(ticket_params)
+    redirect_to tickets_path
   end
 
   def show
