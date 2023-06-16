@@ -1,37 +1,45 @@
 <%= render 'shared/vertical_navbar'%>
 
-<div class="container moved">
-  <h1 class="my-4">Ticket Details</h1>
+<div class="container-fluid moved">
+  <div class="row justify-content-center mt-5">
+    <div class="col-8">
+      <h1 class="text-center">Ticket #<%= @ticket.id %> Details</h1>
+      <div class="mb-2">
+        <div class="card-body text-center">
+          <p class="text-center"><strong>Requester : </strong> <%= @ticket.client_email %></p>
+        </div>
+      </div>
+      <div class="mb-2">
+        <div class="card-body">
+          <p class="text-center"><strong>Subject : </strong> <%= @ticket.subject %></p>
+        </div>
+      </div>
+      <div class="text-center mb-2">
+        <div class="card-body">
+          <p class="text-center"><strong>Wallet : </strong> <%= @ticket.wallet_address %></p>
+        </div>
+      </div>
+      <div class="mb-2">
+        <div class="card-body">
+          <p class="text-center"><strong>Content : </strong> <%= @ticket.content %></p>
+        </div>
+      </div>
 
-  <div class="card mb-3">
-    <div class="card-body">
-      <h5 class="card-title">Ticket ID</h5>
-      <p class="card-text"><%= @ticket.id %></p>
+      <% if @ticket.user.present? %>
+        <div class="mb-2">
+          <div class="card-body">
+            <p class="text-center"><strong>Assignee : </strong> <%= @ticket.user.first_name.capitalize %> <%= @ticket.user.last_name.capitalize %></p>
+          </div>
+        </div>
+
+        <%= link_to "Back to Tickets", tickets_path, class: "btn btn-primary mt-3 mb-3" %>
+
+      <% else  %>
+        <%= link_to "Back to Tickets", tickets_path, class: "btn btn-primary mt-3" %>
+        <%= link_to "Assign to me", assign_ticket_path(@ticket), class: "btn btn-primary mt-3" %>
+
+      <% end %>
     </div>
   </div>
 
-  <div class="card mb-3">
-    <div class="card-body">
-      <h5 class="card-title">Subject</h5>
-      <p class="card-text"><%= @ticket.subject %></p>
-    </div>
-  </div>
-
-  <div class="card mb-3">
-    <div class="card-body">
-      <h5 class="card-title">Requester</h5>
-      <p class="card-text"><%= @ticket.client_email %></p>
-    </div>
-    
-  <%= link_to "Back to Tickets", tickets_path, class: "btn btn-primary mt-3 mb-3" %>
-  <%= link_to "Assign to me", assign_ticket_path(@ticket), data: {turbo_method: :patch}, class: "btn btn-primary text-light rounded shadow-sm" %>
-
-  </div>
 </div>
-
-<style>
-  .table-hover tbody tr:hover {
-    background-color: #f5f5f5;
-    cursor: pointer;
-  }
-</style>
