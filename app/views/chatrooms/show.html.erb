@@ -1,6 +1,9 @@
-<%= render 'shared/vertical_navbar'%>
-
-<div class="container-fluid moved" data-controller="explorer">
+<%if user_signed_in?  %>
+  <%= render 'shared/vertical_navbar'%>
+  <div class="container-fluid moved" data-controller="explorer">
+<% else %>
+  <div class="container-fluid">
+<% end %>
 
   <% if user_signed_in? %>
     <div class="row ticket-header ">
@@ -13,16 +16,7 @@
       </div>
 
       <div class="col-2">
-        <div class="dropdown">
-          <button class="btn btn-primary dropdown-toggle" type="button" id="statusDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Status
-          </button>
-          <div class="dropdown-menu" aria-labelledby="statusDropdown">
-            <a class="dropdown-item" href="#">To Do</a>
-            <a class="dropdown-item" href="#">Doing</a>
-            <a class="dropdown-item" href="#">Done</a>
-          </div>
-        </div>
+        <%= button_to "Close Ticket", ticket_path(@chatroom.ticket), method: :patch, params: { ticket: { status: 'closed' } }, class: "btn btn-primary" %>
       </div>
     </div>
 
@@ -38,7 +32,7 @@
         </div>
       </div>
       <div class="col-6">
-        <%= simple_form_for :search, class: "col-6",data: { action: "click->explorer#search" } do |f| %>
+        <%= simple_form_for :search, class: "col-6", data: { action: "click->explorer#search" } do |f| %>
           <div class="search-form-control form-group">
             <%= f.input :query, label: false, input_html: { data: { "explorer-target": "sourceInput"} }, class: "form-control", placeholder: "Enter your client's wallet/transactions informations here"%>
             <%# <div data-explorer-target="snackbar" id="snackbar"></div> %>
@@ -84,12 +78,13 @@
     </div>
 
     <div class="col-3 new-message-container m-2">
-      <%= simple_form_for([@chatroom, @message]) do |f| %>
-        <div class="form-group">
-          <%= f.input :content, label: "New Message", input_html: { class: "form-control", style: "width: 100%; height: 370px;" } %>
-        </div>
-        <%= f.button :submit, "Send", class: "btn btn-flat" %>
-      <% end %>
+    <%= simple_form_for([@chatroom, @message]) do |f| %>
+  <div class="form-group">
+    <%= f.input :content, label: "New Message", input_html: { class: "form-control", style: "width: 100%; height: 370px;" } %>
+  </div>
+  <%= f.submit "Send", class: "btn btn-flat" %>
+<% end %>
+
     </div>
   </div>
 </div>
