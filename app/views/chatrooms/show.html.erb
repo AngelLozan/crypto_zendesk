@@ -1,6 +1,9 @@
-<%= render 'shared/vertical_navbar'%>
-
-<div class="container-fluid moved" data-controller="explorer">
+<%if user_signed_in?  %>
+  <%= render 'shared/vertical_navbar'%>
+  <div class="container-fluid moved" data-controller="explorer">
+<% else %>
+  <div class="container-fluid">
+<% end %>
 
   <% if user_signed_in? %>
     <div class="row ticket-header ">
