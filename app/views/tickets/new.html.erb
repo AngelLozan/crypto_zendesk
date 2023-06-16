@@ -4,7 +4,7 @@
     <h1>Contact Support</h1>
   </div>
   <div class="d-flex justify-content-center my-3">
-    <button data-wallet-target="buttonOpen" data-action="click->wallet#openModal" class="btn btn-open">Connect Wallet</button>
+    <button data-wallet-target="buttonOpen" data-action="click->wallet#openModal" class="btn btn-flat">Connect Wallet</button>
   </div>
 
 <div class="d-flex align-items-center justify-content-center  my-3">
@@ -13,10 +13,32 @@
     <div class="flex">
       <button data-wallet-target="buttonClose" data-action="click->wallet#closeModal" class="btn-close">X</button>
     </div>
-    <button data-action="click->wallet#metamaskConnect" class="btn">Metamask</button>
-    <button data-action="click->wallet#phantomConnect" class="btn">Phantom</button>
-    <button data-action="click->wallet#walletConnect" class="btn">Wallet Connect</button>
-    <button data-action="click->wallet#exodusConnect" class="btn">Exodus (ALGO)</button>
+
+
+      <button data-action="click->wallet#metamaskConnect" class="btn btn-primary">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <div><img height="30px" size="24" src="https://opensea.io/static/images/logos/metamask-fox.svg" alt="Metamaks Fox"></div>
+          <div class="mx-5">Metamask</div>
+        </div>
+      </button>
+      <button data-action="click->wallet#phantomConnect" class="btn btn-primary">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <div><img height="30px" size="24" src="https://opensea.io/static/images/logos/phantom.svg" alt="Phantom Ghost"></div>
+          <div class="mx-5">Phantom</div>
+        </div>
+      </button>
+      <button data-action="click->wallet#walletConnect" class="btn btn-primary">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <div><img height="30px" size="24" src="https://static.opensea.io/logos/walletconnect-alternative.png" alt="Wallet Connect"></div>
+          <div class="mx-3">Wallet Connect</div>
+        </div>
+      </button>
+      <button data-action="click->wallet#exodusConnect" class="btn btn-primary">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <div><img height="30px" size="24" src="https://www.exodus.com/brand/img/logo.svg" alt="Exodus Logo"></div>
+          <div class="mx-5">Exodus</div>
+        </div>
+      </button>
   </section>
 
   <div data-wallet-target="overlay" data-action="click->wallet#closeModal" class="overlay hidden"></div>
@@ -36,7 +58,7 @@
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, class:"btn btn-primary mt-3", class: 'btn btn-primary' %>
+      <%= f.button :submit, class:"btn btn-flat mt-3"%>
     </div>
   <% end %>
 </div>
