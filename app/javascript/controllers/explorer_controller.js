@@ -8,7 +8,7 @@ import lookUpText from "./lookUpText.js";
 
 // Connects to data-controller="explorer"
 export default class extends Controller {
-  static targets = ["sourceInput", "snackbar"];
+  static targets = ["sourceInput","loader","snackbar"];
 
   connect() {
     console.log("explorer stimulus controller connected");
@@ -39,6 +39,7 @@ export default class extends Controller {
   async search(e) {
     e.preventDefault();
     try {
+      // this.loaderTarget.style.display("block");
       let inputValue = await this.sourceInputTarget.value;
 
       let source = await inputValue.trim();
