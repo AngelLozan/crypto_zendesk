@@ -38,6 +38,7 @@ export default class extends Controller {
       const data = await this.web3Modal.signIn({ statement: 'Connect to Web3Modal' })
       console.info(data)
       this.buttonOpenTarget.innerText = "Connected!";
+      this.addressTarget.value = await data.address[0];
       this.closeModal();
     } catch (err) {
       console.log(err.message);

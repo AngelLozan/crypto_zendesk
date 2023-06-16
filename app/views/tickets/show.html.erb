@@ -36,7 +36,7 @@
 
       <% else  %>
         <%= link_to "Back to Tickets", tickets_path, class: "btn btn-primary mt-3" %>
-        <%= link_to "Assign to me", assign_ticket_path(@ticket), class: "btn btn-primary mt-3" %>
+        <%= link_to "Assign to me", assign_ticket_path(@ticket), data: {turbo_method: :patch}, class: "btn btn-primary mt-3" %>
 
       <% end %>
     </div>
