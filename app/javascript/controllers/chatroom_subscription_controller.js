@@ -18,12 +18,14 @@ export default class extends Controller {
   }
 
 
+
   submitForm(e) {
     e.preventDefault();
     // console.log(e.currentTarget);
     try {
       console.log("triggering form submit event");
       this.formTarget.submit();
+      this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
     } catch (error) {
       console.log(error.message);
     }

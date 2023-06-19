@@ -85,7 +85,7 @@
       <div class="col-3 new-message-container m-2">
       <%= simple_form_for([@chatroom, @message], html: { data: { chatroom_subscription_target: "form" } }) do |f| %>
         <div class="form-group">
-          <%= f.input :content, label: "New Message", input_html: { data: { action: "keydown.enter->chatroom-subscription#submitForm"}, class: "form-control", style: "width: 100%; height: 370px;" } %>
+          <%= f.input :content, label: "New Message (hold 'shift' for new line)", input_html: { data: { action: "keydown.enter->chatroom-subscription#submitForm"}, class: "form-control", style: "width: 100%; height: 370px;" } %>
         </div>
         <%= f.submit "Send", class: "btn btn-flat" %>
       <% end %>
