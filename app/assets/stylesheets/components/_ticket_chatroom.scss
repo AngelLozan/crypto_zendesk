@@ -91,3 +91,15 @@
   padding: 15px;
   height: 500px;
 }
+
+.hidescroll {
+  overflow-x: scroll;
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+
+}
+
+.hidescroll::-webkit-scrollbar {
+  display: none;
+  width: 0 !important;
+}
