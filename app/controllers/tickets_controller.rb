@@ -3,7 +3,7 @@ class TicketsController < ApplicationController
   before_action :set_ticket, only: %i[show edit update assign]
 
   def index
-    @tickets = Ticket.all
+    @tickets = Ticket.all.page params[:page]
     @current_user = current_user
     if params[:query].present?
       sql_subquery = <<~SQL

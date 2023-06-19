@@ -57,7 +57,8 @@
     </thead>
 
   <tbody>
-     <% @tickets.reverse.each do |ticket| %>
+     <% sorted_tickets = @tickets.sort_by {|ticket| ticket.updated_at} %>
+     <% sorted_tickets.reverse.each do |ticket| %>
       <% if ticket.user.present? %>
         <% if ticket.user == @current_user %>
           <tr onclick="window.location='<%= chatroom_path(ticket.chatroom) %>';">
@@ -92,6 +93,11 @@
   </tbody>
 
  </table>
+
+  <div class="container pages-list">
+    <%= paginate @tickets %>
+  </div>
+
 </div>
 
 <style>

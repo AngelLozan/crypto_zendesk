@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   get 'home/index'
   devise_for :users
   root to: "pages#home"
-  resources :tickets, only: %i[index show new create update]
+  resources :tickets, only: %i[show new create update]
+
+  resources :tickets do
+    get '/page/:page', action: :index, on: :collection
+  end
 
   patch '/tickets/:id/assign', to: "tickets#assign", as: :assign_ticket
 
