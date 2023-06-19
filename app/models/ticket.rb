@@ -7,7 +7,7 @@ class Ticket < ApplicationRecord
   validates :subject, presence: true
   validates :content, presence: true
   validates :client_email, presence: true
-  paginates_per 7
+  paginates_per 10
 
   # , uniqueness:{case_sensetive:false},
   # format:{with:VALID_EMAIL_REGEX,multiline:true}

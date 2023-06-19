@@ -6,33 +6,33 @@
 <% end %>
 
   <% if user_signed_in? %>
-    <div class="row ticket-header ">
-      <div class="col-2">
+    <div class="row ticket-header">
+      <div class="col-12 col-lg-2">
         <%= link_to "Back to Tickets", tickets_path, class: "btn btn-primary", style: "width: 100%" %>
       </div>
 
-      <div class="col-8 text-center">
-        <h1>Ticket #<%= @chatroom.ticket.id %> : <%= @chatroom.ticket.subject.capitalize %></h1>
+      <div class="col-12 col-lg-8 text-center">
+        <h2>Ticket #<%= @chatroom.ticket.id %> : <%= @chatroom.ticket.subject.capitalize %></h2>
       </div>
 
-      <div class="col-2">
-        <%= button_to "Close Ticket", ticket_path(@chatroom.ticket), method: :patch, params: { ticket: { status: 'closed' } }, class: "btn btn-primary" %>
+      <div class="col-12 col-lg-2">
+        <%= button_to "Close Ticket", ticket_path(@chatroom.ticket), method: :patch, params: { ticket: { status: 'closed' } }, class: "btn btn-primary", style: "width: 100%" %>
       </div>
     </div>
 
     <div class="row ticket-infos">
-      <div class="col-3">
-        <div class="card-body col-12" >
+      <div class="col-12 col-lg-3">
+        <div class="card-body col-12 col-lg-12" >
           <p class="hidescroll" ><strong>Requester :</strong> <%= @chatroom.ticket.client_email %></p>
         </div>
       </div>
-      <div class="col-3">
+      <div class="col-12 col-lg-3">
         <div class="card-body" >
           <p class="hidescroll"><strong>Wallet :</strong> <%= @chatroom.ticket.wallet_address %></p>
         </div>
       </div>
-      <div class="col-6">
-        <%= simple_form_for :search, class: "col-6", data: { action: "click->explorer#search" } do |f| %>
+      <div class="col-12 col-lg-6">
+        <%= simple_form_for :search, class: "col-lg-6", data: { action: "click->explorer#search" } do |f| %>
           <div class="search-form-control form-group">
             <%= f.input :query, label: false, input_html: { data: { "explorer-target": "sourceInput"} }, class: "form-control", placeholder: "Enter your client's wallet/transactions informations here"%>
             <%# <div class="loader" data-explorer-target="loader"></div> %>
@@ -47,23 +47,23 @@
   <% else %>
     <div class="row ticket-header">
       <% if @chatroom.ticket.user != nil %>
-        <h1 class="mb-4 text-center"><%= @chatroom.ticket.user.first_name %> is here to help!</h1>
+        <h2 class="mb-4 text-center"><%= @chatroom.ticket.user.first_name %> is here to help!</h2>
       <% else %>
-        <h1 class="mb-4 text-center">Welcome to your LiveChat, an agent will be with you soon 🕑</h1>
+        <h2 class="mb-4 text-center">Welcome to your LiveChat, an agent will be with you soon 🕑</h2>
       <% end %>
     </div>
     <div class="row mb-4">
-      <div class="col-4">
+      <div class="col-12 col-lg-4">
         <div class="card-body col-12">
           <p class="hidescroll"><strong>Your email :</strong> <%= @chatroom.ticket.client_email %></p>
         </div>
       </div>
-      <div class="col-4">
+      <div class="col-12 col-lg-4">
         <div class="card-body">
           <p class="hidescroll"><strong>Wallet :</strong> <%= @chatroom.ticket.wallet_address %></p>
         </div>
       </div>
-      <div class="col-4">
+      <div class="col-12 col-lg-4">
         <div class="card-body col-12" >
           <p class="hidescroll"><strong>Your issue :</strong> <%= @chatroom.ticket.content %></p>
         </div>
@@ -72,7 +72,7 @@
   <% end %>
 
   <div class="row justify-content-center">
-    <div class="col-8 messages-container m-2"
+    <div class="col-12 col-lg-8 messages-container m-2"
     data-controller="chatroom-subscription"
     data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
     >
@@ -81,7 +81,7 @@
       <% end %>
     </div>
 
-    <div class="col-3 new-message-container m-2">
+    <div class="col-12 col-lg-3 new-message-container m-2">
     <%= simple_form_for([@chatroom, @message]) do |f| %>
   <div class="form-group">
     <%= f.input :content, label: "New Message", input_html: { class: "form-control", style: "width: 100%; height: 370px;" } %>
