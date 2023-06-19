@@ -22,13 +22,13 @@
 
     <div class="row ticket-infos">
       <div class="col-3">
-        <div class="card-body col-12">
-          <p><strong>Requester :</strong> <%= @chatroom.ticket.client_email %></p>
+        <div class="card-body col-12" >
+          <p class="hidescroll" ><strong>Requester :</strong> <%= @chatroom.ticket.client_email %></p>
         </div>
       </div>
       <div class="col-3">
-        <div class="card-body">
-          <p><strong>Wallet :</strong> <%= @chatroom.ticket.wallet_address %></p>
+        <div class="card-body" >
+          <p class="hidescroll"><strong>Wallet :</strong> <%= @chatroom.ticket.wallet_address %></p>
         </div>
       </div>
       <div class="col-6">
@@ -55,17 +55,17 @@
     <div class="row mb-4">
       <div class="col-4">
         <div class="card-body col-12">
-          <p><strong>Your email :</strong> <%= @chatroom.ticket.client_email %></p>
+          <p class="hidescroll"><strong>Your email :</strong> <%= @chatroom.ticket.client_email %></p>
         </div>
       </div>
       <div class="col-4">
         <div class="card-body">
-          <p><strong>Wallet :</strong> <%= @chatroom.ticket.wallet_address %></p>
+          <p class="hidescroll"><strong>Wallet :</strong> <%= @chatroom.ticket.wallet_address %></p>
         </div>
       </div>
       <div class="col-4">
-        <div class="card-body col-12">
-          <p><strong>Your issue :</strong> <%= @chatroom.ticket.content %></p>
+        <div class="card-body col-12" >
+          <p class="hidescroll"><strong>Your issue :</strong> <%= @chatroom.ticket.content %></p>
         </div>
       </div>
     </div>

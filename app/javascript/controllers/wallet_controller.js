@@ -84,6 +84,25 @@ export default class extends Controller {
     }
   }
 
+  async keplrConnect(){
+    console.log("Keplr connect");
+    try {
+      if (window.keplr) {
+        const chainId = "cosmoshub-4";
+        await window.keplr.enable(chainId);
+        const offlineSigner = await window.keplr.getOfflineSigner(chainId);
+        const accounts = await offlineSigner.getAccounts();
+        this.addressTarget.value = await accounts[0].address;
+        this.buttonOpenTarget.innerText = "Connected!";
+        this.closeModal();
+      } else {
+        console.log("Please install keplr wallet");
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
   async getWalletConnect() {
     const web3Modal = await new Web3ModalAuth({
       projectId: this.projectIdValue,
