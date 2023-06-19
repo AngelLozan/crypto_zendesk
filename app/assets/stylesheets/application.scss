@@ -27,3 +27,12 @@ tbody > * > * {
 .card-body {
   color: $verydarkblue !important;
 }
+
+.pagination > span {
+  padding: 6px;
+}
+
+.pages-list {
+  display: flex;
+  justify-content: flex-end;
+}
