@@ -9,6 +9,7 @@ class TicketsController < ApplicationController
       sql_subquery = <<~SQL
         users.first_name ILIKE :query
         OR users.last_name ILIKE :query
+        OR tickets.wallet_address ILIKE :query
       SQL
       @tickets = @tickets.joins(:user).where(sql_subquery, query: "%#{params[:query]}%")
     end
