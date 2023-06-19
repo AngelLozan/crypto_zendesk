@@ -13,7 +13,7 @@ puts "creating ten users, and tickets"
 tickets = []
 users = []
 
-10.times do
+30.times do
   users << User.create!(email: Faker::Internet.email, password: "secret", password_confirmation: "secret")
   tickets << Ticket.create!(client_email: Faker::Internet.email, subject: Faker::Lorem.sentence, content: Faker::Quote.yoda)
   puts "created a user, and a ticket"
