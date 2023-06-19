@@ -47,9 +47,9 @@
   <% else %>
     <div class="row ticket-header">
       <% if @chatroom.ticket.user != nil %>
-        <h1 class="mb-4 text-center"><%= @chatroom.ticket.user.first_name %> is here to help!</h1>
+        <h2 class="mb-4 text-center"><%= @chatroom.ticket.user.first_name %> is here to help!</h2>
       <% else %>
-        <h1 class="mb-4 text-center">Welcome to your LiveChat, an agent will be with you soon 🕑</h1>
+        <h2 class="mb-4 text-center">Welcome to your LiveChat, an agent will be with you soon 🕑</h2>
       <% end %>
     </div>
     <div class="row mb-4">
@@ -63,15 +63,9 @@
           <p class="hidescroll"><strong>Wallet :</strong> <%= @chatroom.ticket.wallet_address %></p>
         </div>
       </div>
-<<<<<<< HEAD
       <div class="col-12 col-lg-4">
-        <div class="card-body col-12 col-lg-12">
-          <p><strong>Your issue :</strong> <%= @chatroom.ticket.content %></p>
-=======
-      <div class="col-4">
         <div class="card-body col-12" >
           <p class="hidescroll"><strong>Your issue :</strong> <%= @chatroom.ticket.content %></p>
->>>>>>> master
         </div>
       </div>
     </div>
