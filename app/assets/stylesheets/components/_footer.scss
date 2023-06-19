@@ -1,6 +1,6 @@
 .footer {
   background-color: transparent;
-  position: absolute;
+  position: relative;
   bottom: 0;
   display: flex;
   justify-content: center;
@@ -28,9 +28,4 @@
   color: #D23333;
 }
 
-.footer-divider {
-  border: none;
-  border-top: 1px solid #070707;
-  margin: 20px 0;
-}
 
