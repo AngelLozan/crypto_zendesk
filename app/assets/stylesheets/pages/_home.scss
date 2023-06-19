@@ -13,3 +13,14 @@
   flex-direction: column;
   color: $verydarkblue;
 }
+
+h1{
+  font-size: 72px;
+}
+
+.container-dorothy{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
