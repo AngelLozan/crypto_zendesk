@@ -1,27 +1,29 @@
 <%= render 'shared/vertical_navbar'%>
 
 <div class="container-fluid moved">
-
   <div class="d-flex justify-content-center">
-    <h1>Dashboard</h1>
+    <div class="row col-12 col-lg-12">
+      <h1>Dashboard</h1>
+    </div>
   </div>
   <div class="d-flex justify-content-center">
-  <div class="mx-3 p-3 border rounded shadow-sm">
-    <div class="open-tickets">
+    <div class="mx-3 p-3 border rounded shadow-sm">
+      <div class="open-tickets">
         <strong>Open Tickets:</strong> <%= Ticket.open_count %>
       </div>
-  </div>
-  <div class="mx-3 p-3 border rounded shadow-sm">
+    </div>
+    <div class="mx-3 p-3 border rounded shadow-sm">
       <div class="closed-tickets">
         <strong>Closed Tickets:</strong> <%= Ticket.closed_count %>
       </div>
-  </div>
+    </div>
   </div>
 
-
-  <div class="d-flex flex-column justify-content-center my-3">
-    <h3> My Tickets</h3>
-    <p>Welcome back <%= @current_user.first_name %>!</p>
+  <div class="d-flex flex-column justify-content-center m-3">
+    <div class="row col-12 col-lg-12">
+      <h3> My Tickets</h3>
+      <p>Welcome back <strong> <%= @current_user.first_name %></strong>!</p>
+    </div>
   </div>
 
   <table class="table table-hover">
