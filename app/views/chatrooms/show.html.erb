@@ -71,24 +71,24 @@
     </div>
   <% end %>
 
-  <div class="row justify-content-center">
+  <div class="row justify-content-center"  data-controller="chatroom-subscription">
     <div class="col-8 messages-container m-2"
-    data-controller="chatroom-subscription"
     data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
     >
-      <% @chatroom.messages.each do |message| %>
-        <%= render "messages/message", message: message %>
-      <% end %>
+      <div data-chatroom-subscription-target="messages">
+        <% @chatroom.messages.each do |message| %>
+          <%= render "messages/message", message: message %>
+        <% end %>
+      </div>
     </div>
 
-    <div class="col-3 new-message-container m-2">
-    <%= simple_form_for([@chatroom, @message]) do |f| %>
-  <div class="form-group">
-    <%= f.input :content, label: "New Message", input_html: { class: "form-control", style: "width: 100%; height: 370px;" } %>
-  </div>
-  <%= f.submit "Send", class: "btn btn-flat" %>
-<% end %>
-
+      <div class="col-3 new-message-container m-2">
+      <%= simple_form_for([@chatroom, @message], html: { data: { chatroom_subscription_target: "form" } }) do |f| %>
+        <div class="form-group">
+          <%= f.input :content, label: "New Message (hold 'shift' for new line)", input_html: { data: { action: "keydown.enter->chatroom-subscription#submitForm"}, class: "form-control", style: "width: 100%; height: 370px;" } %>
+        </div>
+        <%= f.submit "Send", class: "btn btn-flat" %>
+      <% end %>
     </div>
   </div>
 </div>
