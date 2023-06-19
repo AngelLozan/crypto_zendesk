@@ -1,5 +1,6 @@
 .footer {
   background-color: transparent;
+  position: relative;
   bottom: 0;
   display: flex;
   justify-content: center;
@@ -26,6 +27,7 @@
 .footer .fa-heart {
   color: #D23333;
 }
+
 
 .footer-divider {
   border: none;
