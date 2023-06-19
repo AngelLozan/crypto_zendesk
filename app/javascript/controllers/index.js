@@ -13,5 +13,8 @@ application.register("explorer", ExplorerController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import SearchFormController from "./search_form_controller"
+application.register("search-form", SearchFormController)
+
 import WalletController from "./wallet_controller"
 application.register("wallet", WalletController)
