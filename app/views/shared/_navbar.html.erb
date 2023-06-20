@@ -15,11 +15,12 @@
             <a class="nav-link" href="#">Pricing</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://www.chaincare.tech/tickets/new">Create a Ticket</a>
+            <%= link_to 'Create a Ticket', new_ticket_path, class: "nav-link"%>
+
           </li>
           <% if user_signed_in? %>
             <li class="nav-item active">
-              <%= link_to "Tickets", tickets_url, class: "nav-link" %>
+              <%= link_to "Dashboard", tickets_url, class: "nav-link" %>
             </li>
             <li class="nav-item">
               <%= link_to "Account", account_path, class: "nav-link" %>
