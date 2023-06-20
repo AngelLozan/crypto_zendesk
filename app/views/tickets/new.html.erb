@@ -18,31 +18,31 @@
       <button data-action="click->wallet#metamaskConnect" class="btn btn-primary">
         <div class="d-flex flex-column justify-content-center align-items-center">
           <div><img height="30px" size="24" src="https://opensea.io/static/images/logos/metamask-fox.svg" alt="Metamaks Fox"></div>
-          <div class="mx-5">Metamask</div>
+          <div data-wallet-target="metamask" class="mx-5">Metamask</div>
         </div>
       </button>
       <button data-action="click->wallet#phantomConnect" class="btn btn-primary">
         <div class="d-flex flex-column justify-content-center align-items-center">
           <div><img height="30px" size="24" src="https://opensea.io/static/images/logos/phantom.svg" alt="Phantom Ghost"></div>
-          <div class="mx-5">Phantom</div>
+          <div data-wallet-target="phantom" class="mx-5">Phantom</div>
         </div>
       </button>
       <button data-action="click->wallet#walletConnect" class="btn btn-primary">
         <div class="d-flex flex-column justify-content-center align-items-center">
           <div><img height="30px" size="24" src="https://static.opensea.io/logos/walletconnect-alternative.png" alt="Wallet Connect"></div>
-          <div class="mx-3">Wallet Connect</div>
+          <div data-wallet-target="wc" class="mx-3">Wallet Connect</div>
         </div>
       </button>
       <button data-action="click->wallet#exodusConnect" class="btn btn-primary">
         <div class="d-flex flex-column justify-content-center align-items-center">
           <div><img height="30px" size="24" src="https://www.exodus.com/brand/img/logo.svg" alt="Exodus Logo"></div>
-          <div class="mx-5">Exodus</div>
+          <div data-wallet-target="exodus" class="mx-5">Exodus</div>
         </div>
       </button>
       <button data-action="click->wallet#keplrConnect" class="btn btn-primary">
         <div class="d-flex flex-column justify-content-center align-items-center">
           <div><%= image_tag "keplr.svg", style: 'height:30px;size:24;' %></div>
-          <div class="mx-5">Keplr Wallet</div>
+          <div data-wallet-target="keplr" class="mx-5">Keplr Wallet</div>
         </div>
       </button>
   </section>
