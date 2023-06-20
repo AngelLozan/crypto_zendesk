@@ -2,20 +2,23 @@
 
 <div class="container-fluid mt-3">
   <div class="row col-12 col-lg-12 mb-2 d-flex justify-content-space-between">
-    <div class="col-lg-6 col-md-8 col-sm-12">
-    <h1 class="mb-3">Seamless Support for Web3</h1>
-    <p class="mb-4">Our customer support application makes it easier to use decentralized web (Web 3) technologies. We provide real-time help and proactive solutions to help you navigate the complexities of these technologies.</p>
-    <%= link_to "Create a Ticket", new_ticket_path, class: "btn btn-primary text-light btn-lg rounded shadow-sm mt-3 " %>
-    <%= link_to "Start Free Trial", new_ticket_path, class: "btn btn-primary text-light btn-lg rounded shadow-sm mt-3 ml-5" %>
+    <div class="col-lg-6 col-md-4 col-sm-12">
+      <h1 class="hero-statement mb-3">Seamless Support for Web3</h1>
+      <%# <p class="mini-statement mb-4">Our customer support application makes it easier to use (Web 3) technologies.</p>  %>
+      <p class="mini-statement mb-4">We provide real-time customer support and proactive solutions to help you navigate the complexities of Web3 technologies.</p>
+      <%= link_to "Create a Ticket", new_ticket_path, class: "btn btn-primary text-light btn-lg rounded shadow-sm mt-3 " %>
+      <%= link_to "Start Free Trial", new_ticket_path, class: "btn btn-primary text-light btn-lg rounded shadow-sm mt-3 ml-5" %>
     </div>
-    <div class="col-lg-4 col-md-8 col-sm-12">
-      <img src="https://as2.ftcdn.net/v2/jpg/04/94/81/79/1000_F_494817999_XhozLcbONJGQcOCV6vnidux5eHyytvpn.jpg" class="d-block w-100" alt="Support Agent">
+  
+    <div class="support-agent col-lg-4 col-md-8 col-sm-12">
+
+    
     </div>
   </div>
 
   <div class="row col-12 col-lg-12">
     <div class="text-center">
-      <h2>Features</h2>
+      <h2 class="features">Features</h2>
     </div>
 
     <div class="features-box">
@@ -51,25 +54,32 @@
     </div>
   </div>
 
+  
 
-  <div class="row col-12 col-lg-12 mb-4">
-    <div class="text-center">
-      <h2>Why Chaincare?</h2>
+  <div class= "row col-12 col-lg-12 mb-4">
+    <div class="chaincare text-center">
+      <h2 class= "mb-12  mt-5" >Why Chaincare?</h2>
     </div>
-    <div class="card-product p-2">
+    <%# <div class="card-product mt-5 p-2">
       <div>
-        <img src="https://as1.ftcdn.net/v2/jpg/02/19/97/72/1000_F_219977235_ps8cMnGbh5DRN4kyyLMDDPdPM5J62rRh.jpg" alt="Blockchain Image" >
-      </div>
+       <%= image_tag "AdobeStock_494817999.jpeg"%></div>
+      <%# </div>
       <div class="card-product-infos">
         <h2>Quick and easy resolutions</h2>
         <p> With ChainCare, you gain a trusted partner that streamlines ticket management, offers in-depth integration features, and ensures prompt resolution of your queries.</p>
         <p>Choose ChainCare for unparalleled support, enabling you to harness the full potential of web3 technologies effortlessly."</p>
       </div>
-    </div>
+    </div> 
+      <p>Get started in minutes</p>
+      <p>Quick and easy resolution<p>
+      <div class="contact-support col-lg-4 col-md-8 col-sm-12">
+       <%= image_tag "AdobeStock_494817999.jpeg"%>
+      
+      </div>
   </div>
 
   <div class="row justify-content-center">
-    <div class="col-12 col-lg-4 mb-4">
+    <div class="col-12 col-lg-4 mb-4 mt-5">
       <div style="text-align: center">
         <%= link_to "Get Started", new_ticket_path, class: "btn btn-primary text-light btn-lg rounded shadow-sm h-100" %>
       </div>
