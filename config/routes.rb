@@ -22,4 +22,3 @@ Rails.application.routes.draw do
   get '/tickets/:id', to: 'tickets#show', as: 'show_ticket'
   get '/pricing', to: 'pricing#show', as: 'pricing'
 end
-
