@@ -39,7 +39,7 @@
           </div>
         <% end %>
 
-        <div class="mt-3"><%= link_to "Back", :back, class: 'btn btn-primary' %></div>
+        <div class="mt-3"><%= link_to "Back", account_path, class: 'btn btn-primary' %></div>
 
         <div class="mt-3"><%= link_to "Delete My Account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, style: 'text-decoration: none' %></div>
 

@@ -340,8 +340,8 @@ DEPENDENCIES
   letter_opener
   open-uri
   pg (~> 1.1)
-  pry-byebug (~> 3.10, >= 3.10.1)
   pg_search
+  pry-byebug (~> 3.10, >= 3.10.1)
   puma (~> 5.0)
   pundit
   rails (~> 7.0.5)
