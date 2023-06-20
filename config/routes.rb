@@ -21,4 +21,3 @@ Rails.application.routes.draw do
   get '/account', to: 'pages#account', as: :account
   get '/tickets/:id', to: 'tickets#show', as: 'show_ticket'
 end
-
