@@ -1,9 +1,13 @@
 class TicketsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[new create]
   before_action :set_ticket, only: %i[show edit update assign]
+  helper_method :sort_column, :sort_direction
 
   def index
-    @tickets = Ticket.all.page params[:page]
+    @tickets = Ticket.all.order(updated_at: :desc).page params[:page]
+    if params[:sort].present?
+      @tickets = Ticket.all.order(sort_column + " " + sort_direction).page params[:page]
+    end
     @current_user = current_user
     if params[:query].present?
       sql_subquery = <<~SQL
@@ -80,5 +84,13 @@ class TicketsController < ApplicationController
       :status,
       :subject
     )
+  end
+
+  def sort_column
+    Ticket.column_names.include?(params[:sort]) ? params[:sort] : "id"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end
