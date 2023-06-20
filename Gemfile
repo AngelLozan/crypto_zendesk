@@ -30,7 +30,7 @@ gem "jbuilder"
 gem 'bootstrap', '~> 5.2'
 
 # Use Redis adapter to run Action Cable in production
-gem "redis", "~> 4.0"
+gem "redis"
 
 gem "pg_search"
 
@@ -65,11 +65,12 @@ gem "cloudinary"
 gem 'kaminari'
 gem 'letter_opener', group: :development
 gem 'pry-byebug', '~> 3.10', '>= 3.10.1'
+gem "sidekiq"
+gem "sidekiq-failures", "~> 1.0"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
-  gem "dotenv-rails", groups: [:development, :production, :test]
 end
 
 group :development do
