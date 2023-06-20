@@ -1,6 +1,7 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+  config.action_mailer.delivery_method = :smtp # :letter_opener
   config.action_mailer.default_url_options = { host: "http://localhost:3000" }
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -37,7 +38,6 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :cloudinary
 
-  config.action_mailer.delivery_method = :letter_opener
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false

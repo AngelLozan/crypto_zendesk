@@ -1,4 +1,5 @@
 class Ticket < ApplicationRecord
+  # after_create :send_secret_chat
   # before_validation :valid_email
   VALID_EMAIL_REGEX = /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/i
   belongs_to :user, optional: true
@@ -18,6 +19,10 @@ class Ticket < ApplicationRecord
   #   # TODO: return true if the email is valid, false otherwise
   #   # email.match(/\A[\w+\-.]+@[a-z\d-]+(\.[a-z\d-]+)*\.[a-z]+\z/i) ? true : false
   #   self.client_email = client_email.strip unless client_email.nil?
+  # end
+
+  # def send_secret_chat
+  #   TicketMailer.secret(self).deliver_now
   # end
 
   def self.open_count
