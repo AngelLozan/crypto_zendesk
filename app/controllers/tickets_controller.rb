@@ -1,3 +1,5 @@
+require 'pry-byebug'
+
 class TicketsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[new create]
   before_action :set_ticket, only: %i[show edit update assign]
@@ -35,9 +37,12 @@ class TicketsController < ApplicationController
     @ticket = Ticket.new(ticket_params)
     if @ticket.save
       @chatroom = Chatroom.new
+      @chatroom.secret_url = @chatroom.generate_secret
       @chatroom.ticket = @ticket
+      # binding.pry
       @chatroom.save
-      redirect_to chatroom_path(@chatroom.id)
+      TicketMailer.secret(@ticket).deliver_now # Email user the secret chat
+      redirect_to chatroom_path(@chatroom.secret_url)
     else
       render :new, status: :unprocessable_entity
     end
@@ -47,7 +52,7 @@ class TicketsController < ApplicationController
     if @ticket.update(user: current_user)
       @chatroom = @ticket.chatroom
       @ticket.update(status: 1)
-      redirect_to chatroom_path(@chatroom)
+      redirect_to chatroom_path(@chatroom.secret_url)
     else
       render :index, status: :unprocessable_entity
     end

@@ -1,5 +1,6 @@
 require "faker"
 require "open-uri"
+require 'securerandom'
 
 puts "deleting existing data"
 Message.destroy_all
@@ -28,7 +29,7 @@ puts "done creating users and tickets"
 
 puts "adding chatrooms to 5 tickets"
 tickets.each do |ticket|
-    Chatroom.create!(secret_url: Faker::Internet.domain_name, ticket_id: ticket.id)
-    puts "Added chatroom to #{ticket.id}"
+  Chatroom.create!(secret_url: SecureRandom.hex(10), ticket_id: ticket.id)
+  puts "Added chatroom to #{ticket.id}"
 end
 puts "done adding chatrooms to 5 tickets"
