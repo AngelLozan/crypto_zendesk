@@ -10,13 +10,13 @@ Rails.application.routes.draw do
 
   patch '/tickets/:id/assign', to: "tickets#assign", as: :assign_ticket
 
-  # patch '/tickets/:ticket_id/users/:user_id', to: "tickets#assign", as: :assign_ticket_to_user #no more than two keys nested. Or else use form.
+  # @dev Please leave in case of breaking changes.
+  # resources :chatrooms, only: :show do
+  #   resources :messages, only: :create
+  # end
 
-  # resources :profiles, only: [:show, :edit, :update, :new, :create]
-
-  resources :chatrooms, only: :show do
-    resources :messages, only: :create
-  end
+  resources :chatrooms, only: :show, param: :secret_url, path: '/chatrooms/'
+  post '/chatrooms/:secret_url/messages', to: 'messages#create', as: 'chatroom_messages'
 
   get '/account', to: 'pages#account', as: :account
   get '/tickets/:id', to: 'tickets#show', as: 'show_ticket'
