@@ -41,8 +41,10 @@ class TicketsController < ApplicationController
       @chatroom.ticket = @ticket
       # binding.pry
       @chatroom.save
-      TicketMailer.secret(@ticket).deliver_now # Email user the secret chat
+      TicketMailer.secret(@ticket).deliver_later # Email user the secret chat
+      flash[:notice] = "Thanks for creating a ticket!"
       redirect_to chatroom_path(@chatroom.secret_url)
+
     else
       render :new, status: :unprocessable_entity
     end
@@ -52,6 +54,7 @@ class TicketsController < ApplicationController
     if @ticket.update(user: current_user)
       @chatroom = @ticket.chatroom
       @ticket.update(status: 1)
+      flash[:notice] = "The ticket was assigned to you!"
       redirect_to chatroom_path(@chatroom.secret_url)
     else
       render :index, status: :unprocessable_entity
