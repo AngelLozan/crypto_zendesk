@@ -2,17 +2,27 @@
 .container-fluid {
   padding-top: 20px;
   padding-left: 30px;
-  padding-right: 30px;
+  padding-right: 60px;
   padding-bottom: 20px;
 }
 
 h1{
-  font-size: 72px;
+  font-size: 75px;
 }
 
 h2 {
-  font-size:48px;
+  font-size: 36px;
   font-weight: bold;
+}
+
+h4{
+  font-weight: bold;
+}
+
+.hero-statement{
+  margin-top: 50px;
+  margin-bottom: 60px;
+  padding-right: 50px;
 }
 
 .container-dorothy {
@@ -44,6 +54,7 @@ h2 {
   margin-bottom: 15px;
   margin-right: 20px;
   background-color: white;
+
 }
 
 .feature-box:last-child {
@@ -52,7 +63,7 @@ h2 {
 
 .card-product {
   overflow: hidden;
-  height: 200px;
+  height: 100px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
@@ -81,4 +92,42 @@ h2 {
 
 .card-product .card-product-infos {
   padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 50px;
 }
+ 
+
+.chaincare {
+  margin-bottom: 20px; 
+  text-align: center;
+}
+
+.support-agent {
+  background-image: asset_url("AdobeStock_494817999.jpeg");
+  background-size: cover;
+  width: 50%;
+  height: auto;
+  border: 2px solid black;
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding-left: 50px;
+  padding-right: 50px;
+  align-items: flex-end;
+  overflow: hidden;
+  display: block;
+}
+
+.features{
+  margin-bottom: 120px;
+  margin-top: 140px;
+}
+.mini-statement{
+  margin-top: 50px;
+}
+
+body{
+  background-color: $light-gray;
+}
+
+
+
