@@ -48,19 +48,18 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <th scope="col">Ticket ID</th>
-        <th scope="col">Subject</th>
-        <th scope="col">Requester</th>
-        <th scope="col">Updated</th>
-        <th scope="col">Status</th>
-        <th scope="col">Assignee</th>
+        <th scope="col"><%= sortable "id", "Ticket ID" %> <i class="fa-solid <%= params[:direction] == "desc" ? "fa-caret-down" : "fa-caret-up" %> "></i></th>
+        <th scope="col"><%= sortable "subject", "Subject" %> <i class="fa-solid <%= params[:direction] == "desc" ? "fa-caret-down" : "fa-caret-up" %> "></i></th>
+        <th scope="col"><%= sortable "client_email", "Requester" %> <i class="fa-solid <%= params[:direction] == "desc" ? "fa-caret-down" : "fa-caret-up" %> "></i></th>
+        <th scope="col"><%= sortable "updated_at", "Updated" %> <i class="fa-solid <%= params[:direction] == "desc" ? "fa-caret-down" : "fa-caret-up" %> "></i></th>
+        <th scope="col"><%= sortable "status", "Status" %> <i class="fa-solid <%= params[:direction] == "desc" ? "fa-caret-down" : "fa-caret-up" %> "></i></th>
+        <th scope="col"><%= sortable "user_id", "Assignee" %> <i class="fa-solid <%= params[:direction] == "desc" ? "fa-caret-down" : "fa-caret-up" %> "></i></th>
 
       </tr>
     </thead>
 
   <tbody>
-     <% sorted_tickets = @tickets.sort_by {|ticket| ticket.updated_at} %>
-     <% sorted_tickets.each do |ticket| %>
+     <% @tickets.each do |ticket| %>
       <% if ticket.user.present? %>
         <% if ticket.user == @current_user %>
           <tr onclick="window.location='<%= chatroom_path(ticket.chatroom) %>';">
