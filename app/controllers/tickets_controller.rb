@@ -1,9 +1,15 @@
+require 'pry-byebug'
+
 class TicketsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[new create]
   before_action :set_ticket, only: %i[show edit update assign]
+  helper_method :sort_column, :sort_direction
 
   def index
-    @tickets = Ticket.all.page params[:page]
+    @tickets = Ticket.all.order(updated_at: :desc).page params[:page]
+    if params[:sort].present?
+      @tickets = Ticket.all.order(sort_column + " " + sort_direction).page params[:page]
+    end
     @current_user = current_user
     if params[:query].present?
       sql_subquery = <<~SQL
@@ -31,9 +37,12 @@ class TicketsController < ApplicationController
     @ticket = Ticket.new(ticket_params)
     if @ticket.save
       @chatroom = Chatroom.new
+      @chatroom.secret_url = @chatroom.generate_secret
       @chatroom.ticket = @ticket
+      # binding.pry
       @chatroom.save
-      redirect_to chatroom_path(@chatroom.id)
+      TicketMailer.secret(@ticket).deliver_now # Email user the secret chat
+      redirect_to chatroom_path(@chatroom.secret_url)
     else
       render :new, status: :unprocessable_entity
     end
@@ -43,7 +52,7 @@ class TicketsController < ApplicationController
     if @ticket.update(user: current_user)
       @chatroom = @ticket.chatroom
       @ticket.update(status: 1)
-      redirect_to chatroom_path(@chatroom)
+      redirect_to chatroom_path(@chatroom.secret_url)
     else
       render :index, status: :unprocessable_entity
     end
@@ -80,5 +89,13 @@ class TicketsController < ApplicationController
       :status,
       :subject
     )
+  end
+
+  def sort_column
+    Ticket.column_names.include?(params[:sort]) ? params[:sort] : "id"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end

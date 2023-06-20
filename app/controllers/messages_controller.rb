@@ -1,8 +1,11 @@
+require 'pry-byebug'
+
 class MessagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :create
 
   def create
-    @chatroom = Chatroom.find(params[:chatroom_id])
+    @chatroom = Chatroom.find_by(secret_url: params[:secret_url])
+    # binding.pry
     @message = Message.new(message_params)
     @message.chatroom = @chatroom
     if user_signed_in?
