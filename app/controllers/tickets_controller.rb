@@ -43,9 +43,8 @@ class TicketsController < ApplicationController
       # binding.pry
       @chatroom.save
       TicketMailer.secret(@ticket).deliver_later # Email user the secret chat
-      flash[:notice] = "Thanks for creating a ticket!"
+      flash[:notice] = "A support agent will contact you soon"
       redirect_to chatroom_path(@chatroom.secret_url)
-
     else
       render :new, status: :unprocessable_entity
     end
