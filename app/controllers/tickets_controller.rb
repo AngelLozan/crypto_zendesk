@@ -7,7 +7,23 @@ class TicketsController < ApplicationController
   def index
     @tickets = Ticket.all.page params[:page]
     @current_user = current_user
+    if params[:query].present?
+      sql_subquery = <<~SQL
+        users.first_name ILIKE :query
+        OR users.last_name ILIKE :query
+        OR tickets.wallet_address ILIKE :query
+      SQL
+      @tickets = @tickets.joins(:user).where(sql_subquery, query: "%#{params[:query]}%")
+    end
   end
+
+  # def list
+  #   @tickets = Ticket.includes(:Assignee)
+  #   @tickets = @tickets.where('name ilike ?', "%#{params[:name]}%") if params[:name].present?
+  #   @tickets = @tickets.order("#{params[:column]} #{params[:direction]}")
+  #   render(partial: 'tickets', locals: { tickets: @tickets })
+  # end
+
 
   def new
     @ticket = Ticket.new

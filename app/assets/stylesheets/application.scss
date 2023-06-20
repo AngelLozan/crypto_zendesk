@@ -32,6 +32,14 @@ tbody > * > * {
   padding: 6px;
 }
 
+.pagination span.current.current {
+  font-weight: bolder;
+}
+
+.pagination > span > a {
+  text-decoration: none;
+}
+
 .pages-list {
   display: flex;
   justify-content: flex-end;
