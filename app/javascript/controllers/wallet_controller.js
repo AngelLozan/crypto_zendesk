@@ -47,7 +47,7 @@ export default class extends Controller {
 
   async phantomConnect() {
     try {
-      if (!"phantom" in window) {
+      if (!window.phantom) {
         this.phantomTarget.innerText = "Please install!"
       }
       // const resp = await this.solanaProvider.connect();
