@@ -16,8 +16,9 @@ class TicketsController < ApplicationController
         users.first_name ILIKE :query
         OR users.last_name ILIKE :query
         OR tickets.wallet_address ILIKE :query
+        OR tickets.client_email ILIKE :query
       SQL
-      @tickets = @tickets.joins(:user).where(sql_subquery, query: "%#{params[:query]}%")
+      @tickets = Ticket.all.left_outer_joins(:user).where(sql_subquery, query: "%#{params[:query]}%").page params[:page]
     end
   end
 
