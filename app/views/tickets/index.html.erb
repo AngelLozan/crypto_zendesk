@@ -2,103 +2,107 @@
 
 <div class="container-fluid moved">
   <div class="d-flex justify-content-center">
-    <div class="row col-12 col-lg-12">
-      <h1>Dashboard</h1>
+    <div class="row col-12 text-center col-lg-12 mt-2 mb-3">
+      <h1>Welcome back <strong> <%= @current_user.first_name %></strong> !</h1>
     </div>
   </div>
   <div class="d-flex justify-content-center">
     <div class="mx-3 p-3 border rounded shadow-sm">
-      <div class="open-tickets">
+      <div>
         <strong>Open Tickets:</strong> <%= Ticket.open_count %>
       </div>
     </div>
     <div class="mx-3 p-3 border rounded shadow-sm">
-      <div class="closed-tickets">
+      <div>
+        <strong>Assigned Tickets:</strong> <%= Ticket.assigned_count %>
+      </div>
+    </div>
+    <div class="mx-3 p-3 border rounded shadow-sm">
+      <div>
         <strong>Closed Tickets:</strong> <%= Ticket.closed_count %>
       </div>
     </div>
   </div>
 
-  <div class="d-flex flex-column justify-content-center m-3">
-    <div class="row col-12 col-lg-12">
-      <h3> My Tickets</h3>
-      <p>Welcome back <strong> <%= @current_user.first_name %></strong>!</p>
+  <div class="ticket-table-container">
+    <div class="row mt-2 mb-3 space-between">
+      <div class="col-3 d-flex align-items-end">
+        <h3>Dashboard</h3>
+      </div>
+      <div class="col-9 d-flex justify-content-end"> <!-- Use flexbox for alignment -->
+        <div class="mx-2">
+          <%= form_with url: tickets_path, method: :get, class: "d-flex" do %>
+            <%= text_field_tag :query,
+              params[:query],
+              class: "border border-blue-500 rounded p-2",
+              autocomplete: "off",
+              placeholder: "Filter"
+            %>
+            <%= submit_tag "Search", name: "", class: "btn btn-success" %>
+          <% end %>
+        </div>
+        <div class="dropdown d-flex align-items-stretch">
+          <button class="btn btn-success dropdown-toggle" type="button" id="filterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-filter"></i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="filterDropdown">
+            <a class="dropdown-item" href="#" onclick="filterTickets('all')">All Tickets</a>
+            <a class="dropdown-item" href="#" onclick="filterTickets('open')">Open Tickets</a>
+            <a class="dropdown-item" href="#" onclick="filterTickets('assigned')">Assigned Tickets</a>
+            <a class="dropdown-item" href="#" onclick="filterTickets('closed')">Closed Tickets</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col"><%= sortable "subject", "Subject" %> <i class="fa-solid <%= params[:direction] == "desc" ? "fa-caret-down" : "fa-caret-up" %> "></i></th>
+          <th scope="col"><%= sortable "client_email", "Requester" %> <i class="fa-solid <%= params[:direction] == "desc" ? "fa-caret-down" : "fa-caret-up" %> "></i></th>
+          <th scope="col"><%= sortable "updated_at", "Updated" %> <i class="fa-solid <%= params[:direction] == "desc" ? "fa-caret-down" : "fa-caret-up" %> "></i></th>
+          <th scope="col"><%= sortable "status", "Status" %> <i class="fa-solid <%= params[:direction] == "desc" ? "fa-caret-down" : "fa-caret-up" %> "></i></th>
+          <th scope="col"><%= sortable "user_id", "Assignee" %> <i class="fa-solid <%= params[:direction] == "desc" ? "fa-caret-down" : "fa-caret-up" %> "></i></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @tickets.each do |ticket| %>
+          <% if ticket.user.present? %>
+            <% if ticket.user == @current_user %>
+              <tr class="table-row" data-status="<%= ticket.status %>" onclick="window.location='<%= chatroom_path(ticket.chatroom) %>';">
+                <td><%= ticket.subject %></td>
+                <td><%= ticket.client_email %></td>
+                <td><%= ticket.updated_at.strftime("%Y-%m-%d %H:%M") %></td> <!-- Adjust date format -->
+                <td><%= ticket.status.capitalize %></td>
+                <td><%= ticket.user.first_name.capitalize %> <%= ticket.user.last_name.capitalize %></td>
+              </tr>
+            <% else %>
+              <tr class="table-row" data-status="<%= ticket.status %>" onclick="window.location='<%= show_ticket_path(ticket) %>';">
+                <td><%= ticket.subject %></td>
+                <td><%= ticket.client_email %></td>
+                <td><%= ticket.updated_at.strftime("%Y-%m-%d %H:%M") %>
+                <td><%= ticket.status.capitalize %></td>
+                <td><%= ticket.user.first_name.capitalize %> <%= ticket.user.last_name.capitalize %></td>
+              </tr>
+            <% end %>
+          <% else %>
+            <tr class="table-row" data-status="<%= ticket.status %>" onclick="window.location='<%= show_ticket_path(ticket) %>';">
+              <td><%= ticket.subject %></td>
+              <td><%= ticket.client_email %></td>
+              <td><%= ticket.updated_at.strftime("%Y-%m-%d %H:%M") %></td> <!-- Adjust date format -->
+              <td><%= ticket.status.capitalize %></td>
+              <td>Unassigned</td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="container pages-list">
+      <%= paginate @tickets %>
     </div>
   </div>
-
-  <%# <%= form_tag tickets_path, :method => 'get' do %>
-   <%# <p>
-      <%= text_field_tag :search, params[:search] %>
-      <%#<%= submit_tag "Search", :name => nil %>
-    <%#</p>
-  <% end %>
-  <div class="flex justify-end mb-1">
-    <%= form_with url: tickets_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "border border-blue-500 rounded p-2",
-        autocomplete: "off",
-        placeholder: "Filter"
-      %>
-      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
-    <% end %>
-  </div>
-
-
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col"><%= sortable "id", "Ticket ID" %> <i class="fa-solid <%= params[:direction] == "desc" ? "fa-caret-down" : "fa-caret-up" %> "></i></th>
-        <th scope="col"><%= sortable "subject", "Subject" %> <i class="fa-solid <%= params[:direction] == "desc" ? "fa-caret-down" : "fa-caret-up" %> "></i></th>
-        <th scope="col"><%= sortable "client_email", "Requester" %> <i class="fa-solid <%= params[:direction] == "desc" ? "fa-caret-down" : "fa-caret-up" %> "></i></th>
-        <th scope="col"><%= sortable "updated_at", "Updated" %> <i class="fa-solid <%= params[:direction] == "desc" ? "fa-caret-down" : "fa-caret-up" %> "></i></th>
-        <th scope="col"><%= sortable "status", "Status" %> <i class="fa-solid <%= params[:direction] == "desc" ? "fa-caret-down" : "fa-caret-up" %> "></i></th>
-        <th scope="col"><%= sortable "user_id", "Assignee" %> <i class="fa-solid <%= params[:direction] == "desc" ? "fa-caret-down" : "fa-caret-up" %> "></i></th>
-
-      </tr>
-    </thead>
-
-  <tbody>
-     <% @tickets.each do |ticket| %>
-      <% if ticket.user.present? %>
-        <% if ticket.user == @current_user %>
-          <tr onclick="window.location='<%= chatroom_path(ticket.chatroom) %>';">
-            <th scope="row"><%= ticket.id %></th>
-            <td><%= ticket.subject %></td>
-            <td><%= ticket.client_email %></td>
-            <td><%= ticket.updated_at %></td>
-            <td><%= ticket.status.capitalize %></td>
-            <td><%= ticket.user.first_name.capitalize %> <%= ticket.user.last_name.capitalize %></td>
-          </tr>
-        <% else %>
-          <tr onclick="window.location='<%= show_ticket_path(ticket) %>';">
-            <th scope="row"><%= ticket.id %></th>
-            <td><%= ticket.subject %></td>
-            <td><%= ticket.client_email %></td>
-            <td><%= ticket.updated_at %></td>
-            <td><%= ticket.status.capitalize %></td>
-            <td><%= ticket.user.first_name.capitalize %> <%= ticket.user.last_name.capitalize %></td>
-          </tr>
-        <% end %>
-      <% else %>
-        <tr onclick="window.location='<%= show_ticket_path(ticket) %>';">
-          <th scope="row"><%= ticket.id %></th>
-          <td><%= ticket.subject %></td>
-          <td><%= ticket.client_email %></td>
-          <td><%= ticket.updated_at %></td>
-          <td><%= ticket.status.capitalize %></td>
-          <td>Unassigned</td>
-        </tr>
-      <% end %>
-    <% end %>
-  </tbody>
-
- </table>
-
-  <div class="container pages-list">
-    <%= paginate @tickets %>
-  </div>
-
 </div>
 
 <style>
@@ -106,4 +110,24 @@
     background-color: #f5f5f5;
     cursor: pointer;
   }
+  .ticket-button:hover {
+    background-color: #f9f9f9;
+    cursor: pointer;
+  }
 </style>
+
+<script>
+  function filterTickets(status) {
+    const rows = document.querySelectorAll('.table-row');
+
+    rows.forEach((row) => {
+      const ticketStatus = row.getAttribute('data-status');
+
+      if (status === 'all') {
+        row.style.display = 'table-row';
+      } else {
+        row.style.display = ticketStatus === status ? 'table-row' : 'none';
+      }
+    });
+  }
+</script>

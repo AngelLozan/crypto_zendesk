@@ -29,6 +29,10 @@ class Ticket < ApplicationRecord
     where(status: :open).count
   end
 
+  def self.assigned_count
+    where(status: :assigned).count
+  end
+
   def self.closed_count
     where(status: :closed).count
   end
