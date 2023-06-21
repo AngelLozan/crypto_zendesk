@@ -1,6 +1,6 @@
 .footer {
   background-color: #0f1940;
-  position: relative;
+  position: fixed;
   bottom: 0;
   display: flex;
   justify-content: center;
@@ -9,6 +9,8 @@
   padding: 0px 50px;
   color: $white;
   width: 100vw;
+  z-index: 1;
+  white-space: pre;
 }
 .footer-links {
   display: flex;

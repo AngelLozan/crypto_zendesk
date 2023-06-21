@@ -1,19 +1,17 @@
 <%= render "shared/navbar", home: true %>
 
 <div class="banner">
-  <div class="banner-content text-center">
+   <div class="banner-content text-center">
        <h1>Seamless Support for Web3</h1>
-       <p class=>Our customer support application makes it easier to use (Web 3) technologies.</p>
-       <p class>We provide real-time customer support and proactive solutions to help you navigate the complexities of Web3 technologies.</p>
-      <div class="d-flex justify-content-center">
+        <p class=>Our customer support application makes it easier to use (Web 3) technologies.</p>
+        <p class>We provide real-time customer support and proactive solutions to help you navigate the complexities of Web3 technologies.</p>
+       <div class="d-flex justify-content-center">
         <%= link_to "Get Support", new_ticket_path, class: "btn btn-primary text-light btn-lg rounded shadow-sm mt-3 p-3 border border-light " %>
         <%# <%= link_to "Start Free Trial", new_ticket_path, class: "btn btn-primary text-light btn-lg rounded shadow-sm mt-3  my-3" %>
-     </div>
+      </div>
  </div>
 
-
-
-
+<%= video_tag "Chaincare.mp4", controls: false, autoplay: true, muted: true, loop: false, class: "fullscreen-bg-video", type: "video/mp4" %>
 
 </div>
 
