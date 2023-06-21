@@ -1,7 +1,7 @@
 <div class="navbar-expand-sm navbar-light vertical-navbar">
   <div class="container-fluid h-100">
-    <ul class="nav flex-column align-items-center mt-4">
-      <li class="nav-item active align-items-center">
+    <ul class="nav flex-column mt-4 align-items-center">
+      <li class="nav-item active">
         <%= link_to account_path, class: "nav-link fs-1" do %>
           <% if @current_user.photo.key.nil? %>
             <%= image_tag asset_path("avatar_placeholder.png"), class: "avatar-small" %>

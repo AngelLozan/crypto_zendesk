@@ -36,4 +36,14 @@ class Ticket < ApplicationRecord
   def self.closed_count
     where(status: :closed).count
   end
+
+  include PgSearch::Model
+  pg_search_scope :search_by_subject_and_client_email,
+    against: [ :subject, :client_email ],
+    associated_against: {
+      user: [ :first_name, :last_name ]
+    },
+    using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
 end
