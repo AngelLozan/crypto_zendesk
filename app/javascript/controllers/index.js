@@ -10,6 +10,9 @@ application.register("alert", AlertController)
 import ChatroomSubscriptionController from "./chatroom_subscription_controller"
 application.register("chatroom-subscription", ChatroomSubscriptionController)
 
+import CloseTicketController from "./close_ticket_controller"
+application.register("close-ticket", CloseTicketController)
+
 import ExplorerController from "./explorer_controller"
 application.register("explorer", ExplorerController)
 

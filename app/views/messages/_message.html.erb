@@ -1,25 +1,55 @@
-<% if message.email_address == @chatroom.ticket.client_email %>
-  <div class="row justify-content-start">
-    <div class="col-6 messages-display">
-      <div id="message-<%= message.id %>" class="message">
-        <small class="message-meta">
-          <strong><%= message.email_address %></strong>
-          <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-        </small>
-        <p class="message-content"><%= message.content %></p>
+<% if user_signed_in? %>
+  <% if message.email_address == @chatroom.ticket.client_email %>
+    <small class="message_meta_receiver">
+      <i><%= @chatroom.ticket.client_email %> - <%= message.created_at.strftime("%l:%M %p") %></i>
+    </small>
+    <div class="message_outer_receiver">
+      <div class="message_inner_receiver">
+        <div class="message_bubble_receiver">
+          <p class="message-content"><%= message.content %></p>
+        </div>
       </div>
     </div>
-  </div>
+  <% else %>
+    <small class="message_meta_sender">
+      <i><%= @chatroom.ticket.user.first_name %> - <%= message.created_at.strftime("%l:%M %p") %></i>
+    </small>
+    <div class="message_outer_sender">
+      <div class="message_inner_sender">
+        <div class="message_bubble_sender">
+          <p class="message-content"><%= message.content %></p>
+        </div>
+        <div class="message_avatar">
+          <%= cl_image_tag @chatroom.ticket.user.photo.key, class: "avatar", alt: "dropdown menu", crop: :fill%>
+        </div>
+      </div>
+    </div>
+  <% end %>
 <% else %>
-  <div class="row justify-content-end">
-    <div class="col-6 messages-display">
-      <div id="message-<%= message.id %>" class="message">
-        <small class="message-meta">
-          <strong><%= @chatroom.ticket.user.first_name %></strong>
-          <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-        </small>
-        <p class="message-content"><%= message.content %></p>
+  <% if message.email_address == @chatroom.ticket.client_email %>
+    <small class="message_meta_sender">
+      <i><%= @chatroom.ticket.client_email %> - <%= message.created_at.strftime("%l:%M %p") %></i>
+    </small>
+    <div class="message_outer_sender">
+      <div class="message_inner_sender">
+        <div class="message_bubble_sender">
+          <p class="message-content"><%= message.content %></p>
+        </div>
       </div>
     </div>
-  </div>
+  <% else %>
+    <small class="message_meta_receiver">
+      <i><%= @chatroom.ticket.user.first_name %> - <%= message.created_at.strftime("%l:%M %p") %></i>
+    </small>
+    <div class="message_outer_receiver">
+      <div class="message_inner_receiver">
+        <div class="message_avatar">
+          <%= cl_image_tag @chatroom.ticket.user.photo.key, class: "avatar", alt: "dropdown menu", crop: :fill%>
+        </div>
+        <div class="message_bubble_receiver">
+          <p class="message-content"><%= message.content %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
 <% end %>
