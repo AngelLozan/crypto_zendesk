@@ -95,10 +95,10 @@
 //   margin-top: 20px;
 //   margin-bottom: 50px;
 // }
- 
+
 
 // .chaincare {
-//   margin-bottom: 50px; 
+//   margin-bottom: 50px;
 //   text-align: center;
 // }
 
@@ -194,17 +194,19 @@
 
 .banner {
   height: 100vh;
+  width: 100vw;
   display: flex;
   justify-content: space-around;
   align-items: center;
   background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), image-url("AdobeStock_584193934.jpeg");
   background-size: cover;
   background-position: center;
-  opacity:.9;
+  opacity: 0.89;
   h1 {
     color: white;
     font-weight: bold;
     font-size: 45px;
+    text-shadow: 2px 2px 5px #0f1940;
   }
   p {
     color: white;
@@ -212,6 +214,7 @@
     font-size: 25px;
     font-weight: lighter;
     margin-bottom: 30px;
+    text-shadow: 2px 2px 8px #0f1940;
   }
-  
+
 }
