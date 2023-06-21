@@ -7,7 +7,7 @@
 }
 
 h1{
-  font-size: 75px;
+  font-size: 78px;
 }
 
 h2 {
@@ -21,7 +21,7 @@ h4{
 
 .hero-statement{
   margin-top: 50px;
-  margin-bottom: 60px;
+  margin-bottom: 70px;
   padding-right: 50px;
 }
 
@@ -98,16 +98,16 @@ h4{
  
 
 .chaincare {
-  margin-bottom: 20px; 
+  margin-bottom: 50px; 
   text-align: center;
 }
 
 .support-agent {
   background-image: asset_url("AdobeStock_494817999.jpeg");
   background-size: cover;
+  border-radius: 10px;
   width: 50%;
   height: auto;
-  border: 2px solid black;
   background-size: contain;
   background-repeat: no-repeat;
   padding-left: 50px;
@@ -118,14 +118,77 @@ h4{
 }
 
 .features{
-  margin-bottom: 120px;
+  margin-bottom: 90px;
   margin-top: 140px;
 }
 .mini-statement{
   margin-top: 50px;
 }
 
+.screenshot{
+  width: 50%;
+  height: auto;
+}
 
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
 
+input[type=submit] {
+  background-color: $verydarkblue;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: $verydarkblue;
+}
+
+/* Style the container/contact section */
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+
+/* Create two columns that float next to eachother */
+.column {
+  float: left;
+  width: 50%;
+  margin-top: 6px;
+  padding: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+.dashboard{
+  width: 50%;
+  height: auto;
+}
+ .screenshot-container{
+  display: flex;
+  margin-top: 100px;
+  background-color: $gray;
+ }
 
 
