@@ -191,6 +191,14 @@
 //   background-color: $gray;
 //  }
 
+.fullscreen-bg-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}
 
 .banner {
   height: 100vh;
@@ -198,7 +206,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), image-url("AdobeStock_584193934.jpeg");
+  // background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), image-url("AdobeStock_584193934.jpeg");
   background-size: cover;
   background-position: center;
   opacity: 0.89;
