@@ -65,7 +65,7 @@ gem "cloudinary"
 gem 'kaminari'
 gem 'letter_opener', group: :development
 gem 'pry-byebug', '~> 3.10', '>= 3.10.1'
-gem "sidekiq"
+gem 'sidekiq', '~> 6.5'
 gem "sidekiq-failures", "~> 1.0"
 
 group :development, :test do
