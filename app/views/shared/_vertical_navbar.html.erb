@@ -1,13 +1,13 @@
 <div class="navbar-expand-sm navbar-light vertical-navbar">
-  <div class="container-fluid flex-column align-items-start justify-content-cenbetweenter h-100">
-    <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <% unless @current_user.photo.key.nil? %>
-        <%= cl_image_tag @current_user.photo.key, class: "avatar", alt: "dropdown menu", crop: :fill%>
-      <% end %>
-      <%# <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier",  %>
-    </a>
-
-    <ul class="nav flex-column">
+  <div class="container-fluid h-100">
+    <ul class="nav flex-column mt-4">
+      <li class="nav-item active mb-3">
+        <% if @current_user.photo.key.nil? %>
+          <%= image_tag asset_path("avatar_placeholder.png"), class: "avatar-small" %>
+        <% else %>
+          <%= cl_image_tag @current_user.photo.key, class: "avatar-small", alt: "avatar", crop: :fill%>
+        <% end %>
+      </li>
       <li class="nav-item active">
         <%= link_to  "/", class: "nav-link fs-1" do %>
         <i class="fa-solid fa-house fa-2xs"></i>
