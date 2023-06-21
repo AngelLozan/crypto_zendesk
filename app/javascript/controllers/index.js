@@ -18,3 +18,6 @@ application.register("search-form", SearchFormController)
 
 import WalletController from "./wallet_controller"
 application.register("wallet", WalletController)
+
+import AlertController from "./alert_controller"
+application.register("alert", AlertController)
