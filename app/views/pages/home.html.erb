@@ -1,98 +1,28 @@
 <%= render "shared/navbar", home: true %>
 
-<div class="container-fluid mt-3">
-  <div class="row col-12 col-lg-12 mb-2 d-flex justify-content-space-between">
-    <div class="col-lg-6 col-md-4 col-sm-12">
-      <h1 class="hero-statement mb-3">Seamless Support for Web3</h1>
-      <%# <p class="mini-statement mb-4">Our customer support application makes it easier to use (Web 3) technologies.</p>  %>
-      <p class="mini-statement mb-4">We provide real-time customer support and proactive solutions to help you navigate the complexities of Web3 technologies.</p>
-      <%= link_to "Create a Ticket", new_ticket_path, class: "btn btn-primary text-light btn-lg rounded shadow-sm mt-3 " %>
-      <%= link_to "Start Free Trial", new_ticket_path, class: "btn btn-primary text-light btn-lg rounded shadow-sm mt-3 ml-5" %>
-    </div>
-
-    <div class="support-agent col-lg-4 col-md-8 col-sm-12">
-
-
-    </div>
-  </div>
-
-  <div class="row col-12 col-lg-12">
-    <div class="text-center">
-      <h2 class="features">Features</h2>
-    </div>
-
-    <div class="features-box">
-      <div class="features-boxs">
-        <div class="feature-box">
-          <h4 class="font-weight-bold">Efficient Ticket Management</h4>
-          <div class="feature1">
-            <p>Efficiently manage user support tickets for web3 technologies.</p>
-            <p>Our application streamlines the process of logging, tracking, and resolving tickets, ensuring that users' issues and inquiries are addressed promptly and effectively.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="features-boxs">
-        <div class="feature-box">
-          <h4>Integration with Web3 Tools</h4>
-          <div class="feature1">
-            <p>Experience seamless integration with a wide range of web3 tools, wallets, and decentralized applications (dApps) right within our platform.</p>
-            <p>Enhance your user experience and maximize your productivity with our comprehensive integration features.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="features-boxs">
-        <div class="feature-box">
-          <h4>Real-time Chat with Experts</h4>
-          <div class="feature1">
-            <p>Connect with our knowledgeable support agents in real-time through our integrated chat feature.</p>
-              Get immediate assistance, guidance, and solutions for your web3-related challenges.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="banner">
+  <div class="banner-content text-center">
+       <h1>Seamless Support for Web3</h1>
+       <p class=>Our customer support application makes it easier to use (Web 3) technologies.</p>
+       <p class>We provide real-time customer support and proactive solutions to help you navigate the complexities of Web3 technologies.</p>
+      <div class="d-flex justify-content-center">
+        <%= link_to "Create a Ticket", new_ticket_path, class: "btn btn-primary text-light btn-lg rounded shadow-sm mt-3 p-3 border border-light " %>
+        <%# <%= link_to "Start Free Trial", new_ticket_path, class: "btn btn-primary text-light btn-lg rounded shadow-sm mt-3  my-3" %> %>
+     </div>
+ </div>
 
 
 
-  <div class= "row col-12 col-lg-12 mb-4">
-    <div class="chaincare text-center">
-      <h2 class= "mb-12  mt-5" >Why Chaincare?</h2>
-    </div>
-    <%# <div class="card-product mt-5 p-2">
-      <div>
-       <%= image_tag "AdobeStock_494817999.jpeg"%></div>
-      <%# </div>
-      <div class="card-product-infos">
-        <h2>Quick and easy resolutions</h2>
-        <p> With ChainCare, you gain a trusted partner that streamlines ticket management, offers in-depth integration features, and ensures prompt resolution of your queries.</p>
-        <p>Choose ChainCare for unparalleled support, enabling you to harness the full potential of web3 technologies effortlessly."</p>
-      </div>
-    </div>
-      <p>Get started in minutes</p>
-      <p>Quick and easy resolution<p>
-      <div class="contact-support col-lg-4 col-md-8 col-sm-12">
-       <%= image_tag "AdobeStock_494817999.jpeg"%>
 
-      </div>
-  </div>
-
-  <div class="row justify-content-center">
-    <div class="col-12 col-lg-4 mb-4 mt-5">
-      <div style="text-align: center">
-        <%= link_to "Get Started", new_ticket_path, class: "btn btn-primary text-light btn-lg rounded shadow-sm h-100" %>
-      </div>
-    </div>
-  </div>
 
 </div>
 
+
 <div class="footer">
-  <div class="footer-links">
-    <a href="https://github.com/AngelLozan/crypto_zendesk" target="_blank"><i class="fab fa-github"></i></a>
-  </div>
+    <div class="footer-links">
+     <a href="https://github.com/AngelLozan/crypto_zendesk" target="_blank"><i class="fab fa-github"></i></a>
+   </div>
   <div class="footer-copyright">
-    ChainCare is created with <i class="fas fa-heart"></i> by Tobi, Scott, Dorothy, Corentin, Elena. Enquiries: support@chaincare.tech
+     ChainCare is created with <i class="fas fa-heart"></i> by Tobi, Scott, Dorothy, Corentin, Elena. Enquiries: support@chaincare.tech
   </div>
 </div>

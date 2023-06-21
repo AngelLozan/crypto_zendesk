@@ -1,192 +1,217 @@
 // Specific CSS for your home-page
-.container-fluid {
-  padding-top: 20px;
-  padding-left: 30px;
-  padding-right: 60px;
-  padding-bottom: 20px;
-}
+// .container-fluid {
+//   padding-top: 20px;
+//   padding-left: 30px;
+//   padding-right: 60px;
+//   padding-bottom: 20px;
+// }
 
-h1{
-  font-size: 78px;
-}
+// h1{
+//   font-size: 78px;
+// }
 
-h2 {
-  font-size: 36px;
-  font-weight: bold;
-}
+// h2 {
+//   font-size: 36px;
+//   font-weight: bold;
+// }
 
-h4{
-  font-weight: bold;
-}
+// h4{
+//   font-weight: bold;
+// }
 
-.hero-statement{
-  margin-top: 50px;
-  margin-bottom: 70px;
-  padding-right: 50px;
-}
+// .hero-statement{
+//   margin-top: 50px;
+//   margin-bottom: 70px;
+//   padding-right: 50px;
+// }
 
-.container-dorothy {
+// .container-dorothy {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   height: 320px;
+// }
+
+// .container-dorothy img {
+//   height: 100%;
+// }
+
+// .features-box {
+//   border: 1px solid #ccc;
+//   border-radius: 10px;
+//   padding: 20px;
+//   margin-bottom: 20px;
+//   display: flex;
+//   flex-wrap: wrap;
+//   background-color: $verydarkblue;
+// }
+
+// .features-boxs {
+//   flex-basis: calc(33.33% - 20px);
+//   border: 1px solid #ccc;
+//   border-radius: 10px;
+//   padding: 15px;
+//   margin-bottom: 15px;
+//   margin-right: 20px;
+//   background-color: white;
+
+// }
+
+// .feature-box:last-child {
+//   margin-right: 0;
+// }
+
+// .card-product {
+//   overflow: hidden;
+//   height: 100px;
+//   background: white;
+//   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+//   display: flex;
+//   align-items: center;
+// }
+
+// .card-product img {
+//   height: 100%;
+//   width: 120px;
+//   object-fit: cover;
+// }
+
+// .card-product h2 {
+//   font-size: 16px;
+//   font-weight: bold;
+//   margin: 0;
+// }
+
+// .card-product p {
+//   font-size: 12px;
+//   line-height: 1.4;
+//   opacity: .7;
+//   margin-bottom: 0;
+//   margin-top: 8px;
+// }
+
+// .card-product .card-product-infos {
+//   padding: 20px;
+//   margin-top: 20px;
+//   margin-bottom: 50px;
+// }
+
+
+// .chaincare {
+//   margin-bottom: 50px;
+//   text-align: center;
+// }
+
+// .support-agent {
+//   background-image: asset_url("AdobeStock_494817999.jpeg");
+//   background-size: cover;
+//   border-radius: 10px;
+//   width: 50%;
+//   height: auto;
+//   background-size: contain;
+//   background-repeat: no-repeat;
+//   padding-left: 50px;
+//   padding-right: 50px;
+//   align-items: flex-end;
+//   overflow: hidden;
+//   display: block;
+// }
+
+// .features{
+//   margin-bottom: 90px;
+//   margin-top: 140px;
+// }
+// .mini-statement{
+//   margin-top: 50px;
+// }
+
+// .screenshot{
+//   width: 50%;
+//   height: auto;
+// }
+
+// .my-input-class[type=text], select, textarea {
+//   width: 100%;
+//   padding: 12px;
+//   border: 1px solid #ccc;
+//   margin-top: 6px;
+//   margin-bottom: 16px;
+//   resize: vertical;
+// }
+
+// .my-input-class[type=submit] {
+//   background-color: $verydarkblue;
+//   color: white;
+//   padding: 12px 20px;
+//   border: none;
+//   cursor: pointer;
+// }
+
+// .my-input-class[type=submit]:hover {
+//   background-color: $verydarkblue;
+// }
+
+// /* Style the container/contact section */
+// .contact-container {
+//   border-radius: 5px;
+//   background-color: #f2f2f2;
+//   padding: 10px;
+// }
+
+// /* Create two columns that float next to eachother */
+// .contact-column {
+//   float: left;
+//   width: 50%;
+//   margin-top: 6px;
+//   padding: 20px;
+// }
+
+// /* Clear floats after the columns */
+// .contact-row:after {
+//   content: "";
+//   display: table;
+//   clear: both;
+// }
+
+// /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+// @media screen and (max-width: 600px) {
+//   .contact-column, .my-input-class[type=submit] {
+//     width: 100%;
+//     margin-top: 0;
+//   }
+// }
+
+// .dashboard{
+//   width: 50%;
+//   height: auto;
+// }
+//  .screenshot-container{
+//   display: flex;
+//   margin-top: 100px;
+//   background-color: $gray;
+//  }
+
+
+.banner {
+  height: 100vh;
   display: flex;
+  justify-content: space-around;
   align-items: center;
-  justify-content: center;
-  height: 320px;
-}
-
-.container-dorothy img {
-  height: 100%;
-}
-
-.features-box {
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 20px;
-  margin-bottom: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  background-color: $verydarkblue;
-}
-
-.features-boxs {
-  flex-basis: calc(33.33% - 20px);
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 15px;
-  margin-bottom: 15px;
-  margin-right: 20px;
-  background-color: white;
-
-}
-
-.feature-box:last-child {
-  margin-right: 0;
-}
-
-.card-product {
-  overflow: hidden;
-  height: 100px;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  display: flex;
-  align-items: center;
-}
-
-.card-product img {
-  height: 100%;
-  width: 120px;
-  object-fit: cover;
-}
-
-.card-product h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.card-product p {
-  font-size: 12px;
-  line-height: 1.4;
-  opacity: .7;
-  margin-bottom: 0;
-  margin-top: 8px;
-}
-
-.card-product .card-product-infos {
-  padding: 20px;
-  margin-top: 20px;
-  margin-bottom: 50px;
-}
-
-
-.chaincare {
-  margin-bottom: 50px;
-  text-align: center;
-}
-
-.support-agent {
-  background-image: asset_url("AdobeStock_494817999.jpeg");
+  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), image-url("AdobeStock_584193934.jpeg");
   background-size: cover;
-  border-radius: 10px;
-  width: 50%;
-  height: auto;
-  background-size: contain;
-  background-repeat: no-repeat;
-  padding-left: 50px;
-  padding-right: 50px;
-  align-items: flex-end;
-  overflow: hidden;
-  display: block;
-}
-
-.features{
-  margin-bottom: 90px;
-  margin-top: 140px;
-}
-.mini-statement{
-  margin-top: 50px;
-}
-
-.screenshot{
-  width: 50%;
-  height: auto;
-}
-
-input[type=text], select, textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  margin-top: 6px;
-  margin-bottom: 16px;
-  resize: vertical;
-}
-
-input[type=submit] {
-  background-color: $verydarkblue;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  cursor: pointer;
-}
-
-input[type=submit]:hover {
-  background-color: $verydarkblue;
-}
-
-/* Style the container/contact section */
-.container {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 10px;
-}
-
-/* Create two columns that float next to eachother */
-.column {
-  float: left;
-  width: 50%;
-  margin-top: 6px;
-  padding: 20px;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .column, input[type=submit] {
-    width: 100%;
-    margin-top: 0;
+  background-position: center;
+  opacity:.9;
+  h1 {
+    color: white;
+    font-weight: bold;
+    font-size: 45px;
   }
-}
+  p {
+    color: white;
+    // opacity: .8;
+    font-size: 25px;
+    font-weight: lighter;
+    margin-bottom: 30px;
+  }
 
-.dashboard{
-  width: 50%;
-  height: auto;
 }
- .screenshot-container{
-  display: flex;
-  margin-top: 100px;
-  background-color: $gray;
- }
