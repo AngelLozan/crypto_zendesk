@@ -16,7 +16,7 @@
       </div>
 
       <div class="col-12 col-lg-2">
-        <%= button_to "Close Ticket", ticket_path(@chatroom.ticket), method: :patch, params: { ticket: { status: 'closed' } }, class: "btn btn-primary", style: "width: 100%" %>
+        <%= button_to "Close Ticket", ticket_path(@chatroom.ticket), method: :patch, params: { ticket: { status: 'closed' } }, class: "btn btn-danger", style: "width: 100%" %>
       </div>
     </div>
 
