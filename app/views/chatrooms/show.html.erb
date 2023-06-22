@@ -52,7 +52,7 @@
         <h2 class="mb-4 text-center">Welcome to your LiveChat</h2>
       <% end %>
     </div>
-    <div class="row mb-4">
+    <div class="row mb-4 justify-content-center">
       <div class="col-12 col-lg-4">
         <div class="card-body col-12">
           <p class="hidescroll"><strong>Your email :</strong> <%= @chatroom.ticket.client_email %></p>
@@ -63,11 +63,6 @@
           <p class="hidescroll"><strong>Wallet :</strong> <%= @chatroom.ticket.wallet_address %></p>
         </div>
       </div>
-      <div class="col-12 col-lg-4">
-        <div class="card-body col-12" >
-          <p class="hidescroll"><strong>Your issue :</strong> <%= @chatroom.ticket.content %></p>
-        </div>
-      </div>
     </div>
   <% end %>
 
@@ -75,6 +70,16 @@
     <div class="col-12 col-lg-8 messages-container m-2"
     data-controller="chatroom-subscription"
     data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
+    <small class="message_meta_client">
+      <i><%= @chatroom.ticket.client_email %> - Ticket Content </i>
+    </small>
+    <div class="message_outer_client">
+      <div class="message_inner_client">
+        <div class="message_bubble_client">
+          <p class="message-content"><%= @chatroom.ticket.content %></p>
+        </div>
+      </div>
+    </div>
       <% @chatroom.messages.each do |message| %>
         <%= render "messages/message", message: message %>
       <% end %>
