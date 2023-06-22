@@ -16,7 +16,7 @@
       </div>
 
       <div class="col-12 col-lg-2" data-controller="close-ticket">
-        <%= button_to "Close Ticket", ticket_path(@chatroom.ticket), method: :patch, params: { ticket: { status: 'closed' } }, class: "btn btn-danger", style: "width: 100%", data: { action: "click->close-ticket#closeTicket"}%>
+        <%= button_to "Close Ticket", ticket_path(@chatroom.ticket), method: :patch, params: { ticket: { status: 'closed' } }, class: "btn btn-primary", style: "width: 100%", data: { action: "click->close-ticket#closeTicket"}%>
       </div>
     </div>
 
@@ -74,8 +74,7 @@
   <div class="row justify-content-center">
     <div class="col-12 col-lg-8 messages-container m-2"
     data-controller="chatroom-subscription"
-    data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
-    >
+    data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
       <% @chatroom.messages.each do |message| %>
         <%= render "messages/message", message: message %>
       <% end %>
@@ -86,7 +85,7 @@
       <div class="form-group">
         <%= f.input :content, label: "New Message", input_html: { class: "form-control", style: "width: 100%; height: 370px;" } %>
       </div>
-      <%= f.submit "Send", class: "btn btn-flat" %>
+      <%= f.submit "Send", class: "btn btn-primary" %>
     <% end %>
 
     </div>
