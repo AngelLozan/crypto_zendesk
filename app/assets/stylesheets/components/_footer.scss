@@ -1,6 +1,6 @@
 .footer {
   background-color: #0f1940;
-  position: fixed;
+  position: relative;
   bottom: 0;
   display: flex;
   justify-content: center;
@@ -10,7 +10,8 @@
   color: $white;
   width: 100vw;
   z-index: 1;
-  white-space: pre;
+
+  overflow-wrap: break-word;
 }
 .footer-links {
   display: flex;
