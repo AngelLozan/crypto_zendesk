@@ -20,7 +20,12 @@
           <p class="message-content"><%= message.content %></p>
         </div>
         <div class="message_avatar">
-          <%= cl_image_tag @chatroom.ticket.user.photo.key, class: "avatar", alt: "dropdown menu", crop: :fill%>
+        <% if @chatroom.ticket.user.photo.key.nil? %>
+            <%= image_tag asset_path("avatar_placeholder.png"), class: "avatar" %>
+          <% else %>
+            <%= cl_image_tag @chatroom.ticket.user.photo.key, class: "avatar", alt: "avatar", crop: :fill%>
+          <% end %>
+          <%# <%= cl_image_tag @chatroom.ticket.user.photo.key, class: "avatar", alt: "dropdown menu", crop: :fill%>
         </div>
       </div>
     </div>
@@ -44,7 +49,11 @@
     <div class="message_outer_receiver">
       <div class="message_inner_receiver">
         <div class="message_avatar">
-          <%= cl_image_tag @chatroom.ticket.user.photo.key, class: "avatar", alt: "dropdown menu", crop: :fill%>
+           <% if @chatroom.ticket.user.photo.key.nil? %>
+            <%= image_tag asset_path("avatar_placeholder.png"), class: "avatar" %>
+          <% else %>
+            <%= cl_image_tag @chatroom.ticket.user.photo.key, class: "avatar", alt: "avatar", crop: :fill%>
+          <% end %>
         </div>
         <div class="message_bubble_receiver">
           <p class="message-content"><%= message.content %></p>
