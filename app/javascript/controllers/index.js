@@ -4,8 +4,14 @@
 
 import { application } from "./application"
 
+import AlertController from "./alert_controller"
+application.register("alert", AlertController)
+
 import ChatroomSubscriptionController from "./chatroom_subscription_controller"
 application.register("chatroom-subscription", ChatroomSubscriptionController)
+
+import CloseTicketController from "./close_ticket_controller"
+application.register("close-ticket", CloseTicketController)
 
 import ExplorerController from "./explorer_controller"
 application.register("explorer", ExplorerController)
@@ -16,8 +22,8 @@ application.register("hello", HelloController)
 import SearchFormController from "./search_form_controller"
 application.register("search-form", SearchFormController)
 
+import TicketsFilterController from "./tickets_filter_controller"
+application.register("tickets-filter", TicketsFilterController)
+
 import WalletController from "./wallet_controller"
 application.register("wallet", WalletController)
-
-import AlertController from "./alert_controller"
-application.register("alert", AlertController)
