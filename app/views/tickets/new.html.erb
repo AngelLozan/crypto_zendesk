@@ -73,7 +73,11 @@
     </div>
 
     <div class="form-actions">
+      <% if !current_user %>
       <%= f.button :submit, class:"btn btn-primary mt-3"%>
+      <% else %>
+        <p>Signed in as Support Agent</p>
+      <% end %>
     </div>
   <% end %>
 </div>
